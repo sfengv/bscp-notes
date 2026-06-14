@@ -1,0 +1,169 @@
+{
+  "main": {
+    "id": "e98a1b91df83b2a0",
+    "type": "split",
+    "children": [
+      {
+        "id": "316e9167fedc6eff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "49300a0d9711bf0a",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "39a1b000d1846d51",
+    "type": "split",
+    "children": [
+      {
+        "id": "9167c9840afe6f46",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "10c92f7a77e44bd2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7c545a066ccbaccb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7ed8c34b57d4b79c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "dbe911cf819c44a6",
+    "type": "split",
+    "children": [
+      {
+        "id": "4bad0c1c0c3aba95",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4407f2650398a6ec",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d5f395279b4f5702",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9cf66cd40426cf8b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "369cddc7034ce851",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "10c92f7a77e44bd2",
+  "lastOpenFiles": [
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Mobile Pentesting Tools 17060844ea0a443bb45baaa7d8f4fe0c.md",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Mobile Testing Path b63e0d7568c54ba5a5c36816bafb428a.md",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Mobile Testing Tips 931e8d4536b54056b4e4f9871168925c.md",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Mobile Testing 1f2b0b04c9e14592b6786db29e6d0642.md",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/InjuredAndroid Walkthrough 0b6e21d3cbce4a9a99431d9c1536ce54.md",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Jailbreaking Guide 058a8591638b48dca0e4e303dd5c599c.md",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Rooting Guide c1ce7eda36874ac19e3863eb872cba62.md",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Android Components 6dfe7617a11c44078abe06ba783fc05b.md",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/InjuredAndroid Walkthrough 0b6e21d3cbce4a9a99431d9c1536ce54",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Mobile Testing Tips 931e8d4536b54056b4e4f9871168925c",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Jailbreaking Guide 058a8591638b48dca0e4e303dd5c599c",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Rooting Guide c1ce7eda36874ac19e3863eb872cba62",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Mobile Pentesting Tools 17060844ea0a443bb45baaa7d8f4fe0c",
+    "Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/Mobile Testing 1f2b0b04c9e14592b6786db29e6d0642",
+    "Assets/Images",
+    "Assets/Templates",
+    "TCM PJMT/Bypass Root Detection.md",
+    "TCM PJMT/Course Pros & Cons.md",
+    "TCM PJMT/🌟Testing Methodology.md",
+    "Test.md",
+    "TCM PJMT/General Android Knowledge.md",
+    "Markdown Cheat Sheet.md",
+    "toc.js",
+    "The Web Application Hacker's Handbook.md",
+    "insert table of.md"
+  ]
+}
