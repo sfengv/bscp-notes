@@ -1,9 +1,5 @@
 # Ignore these folders
-bscp-notes/
-Burp Suite Exam/Exam Attempts/
-Mobile Pentesting c0504edb0f074526bf855fb7307dadd4/
-TCM PJMT/
+Burp Exam Attempts/
+Others/
 
 # Ignore these specific files
-Markdown Cheat Sheet.md
-test.md
