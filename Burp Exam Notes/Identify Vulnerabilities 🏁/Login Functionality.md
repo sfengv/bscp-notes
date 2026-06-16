@@ -1,20 +1,20 @@
 ## **_Login Functionality_**
 ### * **Brute-force**
-- [Brute Force](Brute%20Force.md#1.1%20Lab%20Username%20enumeration%20via%20different%20responses%20%E2%AD%95%EF%B8%8F)
-- [Brute Force](Brute%20Force.md#1.4.%20Lab%20Username%20enumeration%20via%20subtly%20different%20responses%20%E2%AD%95%EF%B8%8F)
-- [Brute Force](Brute%20Force.md#1.5.%20Lab%20Username%20enumeration%20via%20response%20timing%20%E2%AD%95%EF%B8%8F)
-- [Authentication](Authentication.md#1.6.%20Lab%20Broken%20brute-force%20protection%2C%20IP%20block%20%E2%AD%95%EF%B8%8F)
-- [Authentication](Authentication.md#1.7.%20Lab%20Username%20enumeration%20via%20account%20lock%20%E2%AD%95%EF%B8%8F)
+- [[Brute Force#1.1 Lab Username enumeration via different responses ⭕️]]
+- [[Brute Force#1.4. Lab Username enumeration via subtly different responses ⭕️]]
+- [[Brute Force#1.5. Lab Username enumeration via response timing ⭕️]]
+- [[Authentication#1.6. Lab Broken brute-force protection, IP block ⭕️]]
+- [[Authentication#1.7. Lab Username enumeration via account lock ⭕️]]
 ### * **2-Factor-Authentication**
-- [Authentication](Authentication.md#1.2.%20Lab%202FA%20simple%20bypass%20%E2%AD%95%EF%B8%8F)
-- [Authentication](Authentication.md#1.8.%20Lab%202FA%20broken%20logic%20%E2%AD%95%EF%B8%8F)
+- [[Authentication#1.2. Lab 2FA simple bypass ⭕️]]
+- [[Authentication#1.8. Lab 2FA broken logic ⭕️]]
 ### * **SQL injection**
-- [SQLi](SQLi.md#2.2.%20Lab%20SQL%20injection%20vulnerability%20allowing%20login%20bypass%20%E2%AD%95%EF%B8%8F)
+- [[SQLi#2.2. Lab SQL injection vulnerability allowing login bypass ⭕️]]
 ### * **Race Conditions**
-- [Race conditions](Race%20conditions.md#1%2F2.2.%20Lab%20Bypassing%20rate%20limits%20via%20race%20conditions%20%E2%AD%95%EF%B8%8F)
+- [[Race conditions#1/2.2. Lab Bypassing rate limits via race conditions ⭕️]]
 ### * **Application logic**
-- [Business logic vulnerabilities](Business%20logic%20vulnerabilities.md#2.9.%20Lab%20Authentication%20bypass%20via%20flawed%20state%20machine%20%E2%AD%95%EF%B8%8F)
+- [[Business logic vulnerabilities#2.9. Lab Authentication bypass via flawed state machine ⭕️]]
 ### * **NoSQL injection**
-- [NoSQL injection](NoSQL%20injection.md#2.2.%20Lab%20Exploiting%20NoSQL%20operator%20injection%20to%20bypass%20authentication%20%E2%AD%95%EF%B8%8F)
-- [NoSQL injection](NoSQL%20injection.md#1%2F2.4%20Lab%20Exploiting%20NoSQL%20operator%20injection%20to%20extract%20unknown%20fields%20%E2%AD%95%EF%B8%8F)
+- [[NoSQL injection#2.2. Lab Exploiting NoSQL operator injection to bypass authentication ⭕️]]
+- [[NoSQL injection#1/2.4 Lab Exploiting NoSQL operator injection to extract unknown fields ⭕️]]
 ---

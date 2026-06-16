@@ -10,7 +10,7 @@ You can solve this lab manually in your browser, or use [DOM Invader](https://p
 1. Find a prototype pollution source
 	1. Appending the following payload in the URL of `/`: `/?__proto__[foo]=bar`.
 	2. Inspect > Console > type: `Object.prototype` and if it returns `{foo: 'bar',...}` then we confirmed **Prototype pollution** on this app.
-		1. ![348](Prototype%20Pollution-20260111201346263.png)
+		1. ![[Prototype Pollution-20260111201346263.png|348]]
 2. Identify a gadget
 	1. Look in Sources and look for `searchLoggerConfigurable.js` and somehow this script the `transport_url` property is used to dynamically append a script to the DOM. **Specially, if `config.transport_url` is found, then the app is vulnerable**.
 	```
@@ -28,19 +28,19 @@ You can solve this lab manually in your browser, or use [DOM Invader](https://p
 	}
 	```
 	2. Enter `/?__proto__[value]=foo` in the URL and Inspect > Elements and see that `<script src="foo"></script>` has been appended. That is our way in to *insert an XSS payload*.
-		1. ![Prototype Pollution-20260111202441607](Prototype%20Pollution-20260111202441607.png)
+		1. ![[Prototype Pollution-20260111202441607.png]]
 3. Craft an exploit
 	1. Solve the lab with `/?__proto__[value]=data:,alert(1);`.
-		1. ![289](Prototype%20Pollution-20260111202606522.png)
+		1. ![[Prototype Pollution-20260111202606522.png|289]]
 ##### Automated Exploit (DOM Invader)
 1. Open Burp browser > DOM Invader extension > turn on prototype pollution 
 	1. If already toggled on, toggle off then back on and reload 
 2. Inspect > DOM Invader and we will see the vulnerable sources.
-	1. ![Prototype Pollution-20260111202853728](Prototype%20Pollution-20260111202853728.png)
+	1. ![[Prototype Pollution-20260111202853728.png]]
 3. Click on the first `Scan for gadgets` and we'll see an alert. DOM Invader found the vulnerable sink.
-	1. ![Prototype Pollution-20260111202940702](Prototype%20Pollution-20260111202940702.png)
+	1. ![[Prototype Pollution-20260111202940702.png]]
 4. Click Exploit and it'll insert a PoC **confirming a prototype pollution vulnerability leading to DOM XSS**.
-	1. ![339](Prototype%20Pollution-20260111203115889.png)
+	1. ![[Prototype Pollution-20260111203115889.png|339]]
 >[!tip] How to Identify this Vulnerability?
 >1. Manual method: insert payload in URL and see it reflected in Console
 >	1. Look for `config.transport_url`
@@ -167,9 +167,9 @@ function sanitizeKey(key) {
 /?constconstructorructor[protoprototypetype][foo]=bar /?constconstructorructor.protoprototypetype.foo=bar
 ```
 4. Look in `searchLogger.js` and the color is similar to a previous lab; it has `config.transport_url`.
-	1. ![Prototype Pollution-20260111210257818](Prototype%20Pollution-20260111210257818.png)
+	1. ![[Prototype Pollution-20260111210257818.png]]
 5. Use this payload in the URL `/?__pro__proto__to__[transport_url]=foo` then check Inspect > Elements to see a `<script>` tag has been appended.
-	1. ![Prototype Pollution-20260111210451323](Prototype%20Pollution-20260111210451323.png)
+	1. ![[Prototype Pollution-20260111210451323.png]]
 6. Use this to solve the lab: `/?__pro__proto__to__[transport_url]=data:,alert(1);`.
 ##### Automated Method
 Use DOM Invader and solve like the previous labs.
@@ -193,19 +193,19 @@ To solve the lab:
 This lab is based on real-world vulnerabilities discovered by PortSwigger Research. For more details, check out [Widespread prototype pollution gadgets](https://portswigger.net/research/widespread-prototype-pollution-gadgets) by [Gareth Heyes](https://portswigger.net/research/gareth-heyes).
 -
 3. Open the Burp browser > turn on `Prototype Pollution is on` > Reload
-	1. ![318](Prototype%20Pollution-20260109203237408.png)
+	1. ![[Prototype Pollution-20260109203237408.png|318]]
 4. Inspect > DOM Invader and notice it found 2 sources in the `hash` property. Click Scan for gadgets and got a hit. DOM Invader successfully accessed the `setTimeout()` sink via the `hitCallback` gadget. **This confirms a prototype pollution vulnerability**.
-	1. ![636](Prototype%20Pollution-20260109203415835.png)
-	2. ![Prototype Pollution-20260109203615895](Prototype%20Pollution-20260109203615895.png)
+	1. ![[Prototype Pollution-20260109203415835.png|636]]
+	2. ![[Prototype Pollution-20260109203615895.png]]
 5. Click Exploit. It will automatically generate a PoC and notice the payload in the URL and got a reflected XSS.
-	1. ![311](Prototype%20Pollution-20260109203702352.png)
+	1. ![[Prototype Pollution-20260109203702352.png|311]]
 6. Exploit server and enter the below payload > Store > View exploit to try this on yourself. Got our own cookie. *Manually added that cookie in via Cookie Editor*.
 ```
 <script>
     location="https://YOUR-LAB-ID.web-security-academy.net/#__proto__[hitCallback]=alert%28document.cookie%29"
 </script>
 ```
-![350](Prototype%20Pollution-20260109204137114.png)
+![[Prototype Pollution-20260109204137114.png|350]]
 5. Deliver exploit to victim and solved. **In the BSCP exam, we'd want to get the administrator's session cookie with this attack**.
 
 >[!tip] How to Identify this Vulnerability?

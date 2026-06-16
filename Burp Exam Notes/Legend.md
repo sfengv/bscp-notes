@@ -1,15 +1,15 @@
 
 ### Mystery Labs
-1. [Deserialization](Deserialization.md#3.6.%20Lab%20Exploiting%20PHP%20deserialization%20with%20a%20pre-built%20gadget%20chain%20%E2%AD%95%EF%B8%8F) 
-2. [HTTP2](HTTP2.md#1.8.%20Lab%20Response%20queue%20poisoning%20via%20H2.TE%20request%20smuggling%20%E2%AD%95%EF%B8%8F)
-3. [CSRF](CSRF.md#2.11.%20Lab%20CSRF%20where%20Referer%20validation%20depends%20on%20header%20being%20present%20%E2%AD%95%EF%B8%8F)
-4. [Deserialization](Deserialization.md#3.4.%20Lab%20Arbitrary%20object%20injection%20in%20PHP%20%E2%AD%95%EF%B8%8F)
-5. [Web Cache Poisoning](Web%20Cache%20Poisoning.md#1.5.Lab%20Web%20cache%20poisoning%20via%20an%20unkeyed%20query%20string%20%E2%AD%95%EF%B8%8F)
-6. [Brute Force](Brute%20Force.md#1.4.%20Lab%20Username%20enumeration%20via%20subtly%20different%20responses%20%E2%AD%95%EF%B8%8F)
-7. [LFI](LFI.md#3.6.%20Lab%20File%20path%20traversal%2C%20validation%20of%20file%20extension%20with%20null%20byte%20bypass%20%E2%AD%95%EF%B8%8F)
-8. [SQLi](SQLi.md#2.5.%20Lab%20SQL%20injection%20attack%2C%20listing%20the%20database%20contents%20on%20non-Oracle%20databases%20%E2%AD%95%EF%B8%8F)
-9. [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20Stored%20DOM%20XSS%20%E2%AD%95%EF%B8%8F)
-10. [Blind SQLi](Blind%20SQLi.md#2.17.%20Lab%20Blind%20SQL%20injection%20with%20out-of-band%20data%20exfiltration%20%E2%AD%95%EF%B8%8F)
+1. [[Deserialization#3.6. Lab Exploiting PHP deserialization with a pre-built gadget chain ⭕️]] 
+2. [[HTTP2#1.8. Lab Response queue poisoning via H2.TE request smuggling ⭕️]]
+3. [[CSRF#2.11. Lab CSRF where Referer validation depends on header being present ⭕️]]
+4. [[Deserialization#3.4. Lab Arbitrary object injection in PHP ⭕️]]
+5. [[Web Cache Poisoning#1.5.Lab Web cache poisoning via an unkeyed query string ⭕️]]
+6. [[Brute Force#1.4. Lab Username enumeration via subtly different responses ⭕️]]
+7. [[LFI#3.6. Lab File path traversal, validation of file extension with null byte bypass ⭕️]]
+8. [[SQLi#2.5. Lab SQL injection attack, listing the database contents on non-Oracle databases ⭕️]]
+9. [[DOM-Based XSS#1.x. Lab Stored DOM XSS ⭕️]]
+10. [[Blind SQLi#2.17. Lab Blind SQL injection with out-of-band data exfiltration ⭕️]]
 
 ## Shop 🛍️
 - Authenticated Shop
@@ -81,7 +81,7 @@
 		- Submit Feedback
 		- Target > Engagement tools > Search
 		- Post Comment
-		- Use this HTTP Request Smuggling Payload: [README](Stage%201/HTTP%20Request%20Smuggling/README.md#%5Eosmqx6)
+		- Use this HTTP Request Smuggling Payload: [[Burp Exam Notes/Stage 1/HTTP Request Smuggling/README#^osmqx6]]
 		- "HTML is allowed"
 	- Search Bar
 		- Use the HTTP Request Smuggling Payload

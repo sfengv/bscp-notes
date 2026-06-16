@@ -19,15 +19,15 @@ Use InQL - GraphQL scanner
 
 - GraphQL Visualizer
 	- hidden parameter 
-		- [GraphQL Endpoints](GraphQL%20Endpoints.md#2.1.%20Lab%20Accessing%20private%20GraphQL%20posts%20%E2%AD%95%EF%B8%8F)
+		- [[GraphQL Endpoints#2.1. Lab Accessing private GraphQL posts ⭕️]]
 - `/api`
 	- 400 Bad Request: "Query not present"
-		- [GraphQL Endpoints](GraphQL%20Endpoints.md#2.3.%20Lab%20Finding%20a%20hidden%20GraphQL%20endpoint%20%E2%AD%95%EF%B8%8F)
+		- [[GraphQL Endpoints#2.3. Lab Finding a hidden GraphQL endpoint ⭕️]]
 - "mutation"
-	- [GraphQL Endpoints](GraphQL%20Endpoints.md#2.2%20Lab%20Accidental%20exposure%20of%20private%20GraphQL%20fields%20%E2%AD%95%EF%B8%8F)
+	- [[GraphQL Endpoints#2.2 Lab Accidental exposure of private GraphQL fields ⭕️]]
 	- "You have made too many incorrect login attempts..."
-		- [GraphQL Endpoints](GraphQL%20Endpoints.md#2.4.%20Lab%20Bypassing%20GraphQL%20brute%20force%20protections%20%E2%AD%95%EF%B8%8F)
-	- [GraphQL Endpoints](GraphQL%20Endpoints.md#2.5.%20Lab%20Performing%20CSRF%20exploits%20over%20GraphQL%20%E2%AD%95%EF%B8%8F)
+		- [[GraphQL Endpoints#2.4. Lab Bypassing GraphQL brute force protections ⭕️]]
+	- [[GraphQL Endpoints#2.5. Lab Performing CSRF exploits over GraphQL ⭕️
 
 
 
@@ -37,9 +37,9 @@ The blog page for this lab contains a hidden blog post that has a secret passwor
 Learn more about [Working with GraphQL in Burp Suite](https://portswigger.net/burp/documentation/desktop/testing-workflow/working-with-graphql).
 1. Click on each blog post, observe the `id` parameter on each `POST /graphql/v1` request and notice the `id`s are sequential integers from 1-5 but *3 is missing*. Send to Repeater.
 2. Right click > GraphQL > Set introspection query > Send > copy the response and paste it in the [GraphQL Visualizer](https://nathanrandal.com/graphql-visualizer/) (remove the headers) and see that the BlogPost type has a `postPassword` field
-	1. ![371](GraphQL%20Endpoints-20260112161751361.png)
+	1. ![[GraphQL Endpoints-20260112161751361.png|371]]
 3. Repeater > GraphQL tab > add `postPassword` in Query and change `id` to 3 in Variables > Send and got the password. Submit `7fxo342mevjkqkmv7w5b16xtq1fubzs3` to solve.
-	1. ![GraphQL Endpoints-20260112162053871](GraphQL%20Endpoints-20260112162053871.png)
+	1. ![[GraphQL Endpoints-20260112162053871.png]]
 
 >[!tip] How to Identify this Vulnerability?
 >1. `POST /graphql/v1` requests
@@ -51,20 +51,20 @@ Learn more about [Working with GraphQL in Burp Suite](https://portswigger.net/b
 The user management functions for this lab are powered by a GraphQL endpoint. The lab contains an access control vulnerability whereby you can induce the API to reveal user credential fields.
 To solve the lab, sign in as the administrator and delete the username `carlos`.
 1. Try to login with arbitrary credentials like `aaa:aaa` and notice the `POST /graphql/v1` request with a *mutation* containing username + password. Send to Repeater.
-	1. ![GraphQL Endpoints-20260112220901396](GraphQL%20Endpoints-20260112220901396.png)
+	1. ![[GraphQL Endpoints-20260112220901396.png]]
 >[!info] GraphQL Mutation
 >A type of operation used to **modify data** on the server. Unlike queries, which are for fetching data, mutations allow clients to create, update, or delete records in the database, similar to using `POST`, `PUT`, `PATCH`, or `DELETE` methods in a REST API.
 ##### Manual Method
 1. Right click > GraphQL > set introspection query > Send. 
 2. Right click on the response > GraphQL > Save GraphQL queries to site map > click on your lab id > inspect the `POST /graphql/v1` requests and find `getUser` query. It takes in an `id` and returns the user's `username` + `password`. 
-	1. ![303](GraphQL%20Endpoints-20260112221344578.png)
+	1. ![[GraphQL Endpoints-20260112221344578.png|303]]
 ##### Automated Method
 1. Right click > Extensions > InQL - GraphQL Scanner > Generate 
-	1. ![GraphQL Endpoints-20260112222237529](GraphQL%20Endpoints-20260112222237529.png)
+	1. ![[GraphQL Endpoints-20260112222237529.png]]
  2. InQL tab > Scanner > Queries > getUser and notice the `getUser` query.
-	 1. ![GraphQL Endpoints-20260112222331795](GraphQL%20Endpoints-20260112222331795.png)
+	 1. ![[GraphQL Endpoints-20260112222331795.png]]
  3. Send to Repeater > Send. `"id":0` doesn't return any user credentials. Enter `"id":1` will get us the administrator's credentials. Login > delete carlos to solve.
-	1. ![GraphQL Endpoints-20260112221726410](GraphQL%20Endpoints-20260112221726410.png)
+	1. ![[GraphQL Endpoints-20260112221726410.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. A GraphQL mutation in the `POST` request
 >2. Query that return user credentials in Site Map or use InQL scanner
@@ -76,20 +76,20 @@ The user management functions for this lab are powered by a hidden GraphQL endpo
 To solve the lab, find the hidden endpoint and delete `carlos`.
 1. Click around on the app and login as `wiener:peter` and use the update email feature but *no graphQL requests*.
 2. Send `/` to Repeater > Send `/api` and notice the response says "Query not present". Where normally it would give a 404 Not Found.
-	1. ![GraphQL Endpoints-20260112222655356](GraphQL%20Endpoints-20260112222655356.png)
+	1. ![[GraphQL Endpoints-20260112222655356.png]]
 3. Send a *universal query* (`/api?query=query{__typename}`) in the URL due to this being a `GET` request. This **confirms that this is a GraphQL endpoint**.
-	1. ![GraphQL Endpoints-20260112222922676](GraphQL%20Endpoints-20260112222922676.png)
+	1. ![[GraphQL Endpoints-20260112222922676.png]]
 4. Right click > GraphQL > Set introspection query > Send. Note the `__schema` in the message.
-	1. ![GraphQL Endpoints-20260112223124611](GraphQL%20Endpoints-20260112223124611.png)
+	1. ![[GraphQL Endpoints-20260112223124611.png]]
 5. To bypass introspection protection: add a newline `%0a` after `___schema`. Got a 200 OK!
-	1. ![GraphQL Endpoints-20260112223314630](GraphQL%20Endpoints-20260112223314630.png)
+	1. ![[GraphQL Endpoints-20260112223314630.png]]
 ##### Manual Method
 1. Right click on the response > GraphQL > Save GraphQL queries to site map > click on your lab id > inspect the `POST /graphql/v1` requests and find `getUser` query. Send to Repeater.
-	1. ![259](GraphQL%20Endpoints-20260112223549539.png)
+	1. ![[GraphQL Endpoints-20260112223549539.png|259]]
 2. Send and `"id":0` doesn't have any user credentials. GraphQL tab in Request > change `id` to 3 > Send. Now we confirmed that carlos's user id is 3.
-	1. ![GraphQL Endpoints-20260112223828346](GraphQL%20Endpoints-20260112223828346.png)
+	1. ![[GraphQL Endpoints-20260112223828346.png]]
 3. Back to Target > Site Map and send the "DeleteOrganizationUserInput" query to Repeater. GraphQL tab > change id to 3 and send to solve.
-	1. ![GraphQL Endpoints-20260112223938163](GraphQL%20Endpoints-20260112223938163.png)
+	1. ![[GraphQL Endpoints-20260112223938163.png]]
 ##### Automated Method
 Follow this: https://github.com/botesjuan/Burp-Suite-Certified-Practitioner-Exam-Study?tab=readme-ov-file#identify-graphql-api
 >[!tip] How to Identify this Vulnerability?
@@ -104,7 +104,7 @@ Follow this: https://github.com/botesjuan/Burp-Suite-Certified-Practitioner-Exam
 The user login mechanism for this lab is powered by a GraphQL API. The API endpoint has a rate limiter that returns an error if it receives too many requests from the same origin in a short space of time.
 To solve the lab, brute force the login mechanism to sign in as `carlos`. Use the list of [authentication lab passwords](https://portswigger.net/web-security/authentication/auth-lab-passwords) as your password source.
 1. Login with arbitrary credentials `aaa:aaa` until you get a response length longer than usual (e.g., 592 vs 228). *The app has rate limiting for too many invalid login attempts*. Send to Repeater.
-	1. ![GraphQL Endpoints-20260113103501975](GraphQL%20Endpoints-20260113103501975.png)
+	1. ![[GraphQL Endpoints-20260113103501975.png]]
 2. Generate a password list 
 	1. Paste the following code into Console (might have to type `allow pasting` first) and the payload we need will be in our clipboard.
 	2. This takes in a list of potential passwords and pass it in `$password` to guess carlos's password.
@@ -117,9 +117,9 @@ bruteforce$index:login(input:{password: "$password", username: "carlos"}) {
 `.replaceAll('$index',index).replaceAll('$password',element)).join('\n'));console.log("The query has been copied to your clipboard.");
 ```
 3. Repeater > GraphQL > replace the existing code inside `mutation login {...}`
-	1. ![GraphQL Endpoints-20260113105054171](GraphQL%20Endpoints-20260113105054171.png)
+	1. ![[GraphQL Endpoints-20260113105054171.png]]
 4. Scroll til we find `bruteforce14` and the password is `monkey`. Login as carlos and solve.
-	1. ![GraphQL Endpoints-20260113105147313](GraphQL%20Endpoints-20260113105147313.png)
+	1. ![[GraphQL Endpoints-20260113105147313.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. `POST` GraphQL mutation request
 >2. Rate limiting 
@@ -136,19 +136,19 @@ You can log in to your own account using the following credentials: `wiener:pet
 	1. Right click > Change request method *twice*
 	2. Request body is empty now, need to add it back in (see below)
 3. Duplicate the tab > GraphQL tab > copy the contents under both boxes and paste it in the previous tab in this format: `query=PASTE-HERE&variable=PASTE-HERE`
-	1. ![GraphQL Endpoints-20260113111648688](GraphQL%20Endpoints-20260113111648688.png)
+	1. ![[GraphQL Endpoints-20260113111648688.png]]
 4. Change the email. It should look like this
-	1. ![GraphQL Endpoints-20260113111901936](GraphQL%20Endpoints-20260113111901936.png)
+	1. ![[GraphQL Endpoints-20260113111901936.png]]
 5. URL encode key characters EXCEPT `query=` and `&variables=`
-	1. ![GraphQL Endpoints-20260113111959643](GraphQL%20Endpoints-20260113111959643.png)
+	1. ![[GraphQL Endpoints-20260113111959643.png]]
 6. Craft a CSRF payload:
 	1. Change the email. 
 	2. Right click > Engagement Tools > Generate CSRF PoC > Test in browser *didn't work for me so had to URL encode all characters then it worked*
 	3. Before
-		1. ![GraphQL Endpoints-20260113115246350](GraphQL%20Endpoints-20260113115246350.png)
+		1. ![[GraphQL Endpoints-20260113115246350.png]]
 	4. After
-		1. ![GraphQL Endpoints-20260113115324873](GraphQL%20Endpoints-20260113115324873.png)
-		2. ![GraphQL Endpoints-20260113115334363](GraphQL%20Endpoints-20260113115334363.png)
+		1. ![[GraphQL Endpoints-20260113115324873.png]]
+		2. ![[GraphQL Endpoints-20260113115334363.png]]
 7. Change the email > Copy HTML > paste in exploit server > store > deliver exploit to victim and solve.
 
 >`POST` requests with `application/json` as the content type are secure against CSRF (as long as the content type is validated) but `GET` requests with `x-www-form-urlencoded` are vulnerable.

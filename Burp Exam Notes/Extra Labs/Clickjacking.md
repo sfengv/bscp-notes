@@ -14,10 +14,10 @@ To solve the lab, craft some HTML that frames the account page and fools the use
 
 You can log in to your own account using the following credentials: `wiener:peter`
 1. Login and go to the exploit server and use the change email feature and notice the `POST` request uses a `csrf` token.
-	1. ![Clickjacking-20260212095230540](Clickjacking-20260212095230540.png)
+	1. ![[Clickjacking-20260212095230540.png]]
 2. Exploit server > paste the payload below (replace your lab id) > Store > View exploit. Modify the `width, height, top, left` numbers to have "Click me" aligned with "Delete account".
 	1. **IMPORTANT: Do not click on Click me or Delete account**.
-	2. ![Clickjacking-20260212100400937](Clickjacking-20260212100400937.png)
+	2. ![[Clickjacking-20260212100400937.png]]
 3. Deliver to victim and solve.
 ```
 <style>
@@ -54,7 +54,7 @@ To solve the lab, craft some HTML that frames the account page and fools the use
 You can log in to your own account using the following credentials: `wiener:peter`
 1. Login > use change email > notice a csrf token. 
 2. Exploit server > paste the payload below (change YOUR-LAB-ID) > Store > View exploit to ensure that "Click me" hovers over "Update email". 
-	1. ![Clickjacking-20260212102630778](Clickjacking-20260212102630778.png)
+	1. ![[Clickjacking-20260212102630778.png]]
 3. Deliver to victim and solve.
 ```
 <style>
@@ -93,7 +93,7 @@ You can log in to your own account using the following credentials: `wiener:pet
 1. Login > use change email > notice a csrf token. 
 2. Exploit server > paste the payload below (change YOUR-LAB-ID) > Store > View exploit to ensure that "Click me" hovers over "Update email". 
 	1. **Notice the different between the previous lab is this one requires the `sandbox="allow-forms"` attribute**.
-	2. ![Clickjacking-20260212103210830](Clickjacking-20260212103210830.png)
+	2. ![[Clickjacking-20260212103210830.png]]
 3. Deliver to victim and solve.
 ```
 <style>
@@ -159,9 +159,9 @@ This lab has some account functionality that is protected by a CSRF token and al
 You can log in to the account yourself using the following credentials: `wiener:peter`
 1. Login and enter the below payload in the exploit server. Replace `YOUR-LAB-ID`. Change the `$` values to ensure `Test me first` lines up with `Delete account` and `Test me next` lines up with `Yes`.
 	1. I used width:500px; height: 700px; top:500px; left:50px; top:285px; left:225px;
-	2. ![Extra Labs-20260127211843054](Extra%20Labs-20260127211843054.png)
-	3. ![244](Extra%20Labs-20260127211250183.png)
-	4. ![213](Extra%20Labs-20260127211312897.png)
+	2. ![[Extra Labs-20260127211843054.png]]
+	3. ![[Extra Labs-20260127211250183.png|244]]
+	4. ![[Extra Labs-20260127211312897.png|213]]
 ```
 <style> iframe { position:relative; width:$width_value; height: $height_value; opacity: $opacity; z-index: 2; }    .firstClick, .secondClick { position:absolute; top:$top_value1; left:$side_value1; z-index: 1; }    .secondClick { top:$top_value2; left:$side_value2; } </style> <div class="firstClick">Test me first</div> <div class="secondClick">Test me next</div> <iframe src="https://YOUR-LAB-ID.web-security-academy.net/my-account"></iframe>
 ```

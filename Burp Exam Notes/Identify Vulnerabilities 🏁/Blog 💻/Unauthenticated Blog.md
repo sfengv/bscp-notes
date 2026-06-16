@@ -3,117 +3,117 @@
 ##### GraphQL
 - GraphQL Visualizer
 	- `postPassword: String` in `BlogPost`
-		- [GraphQL Endpoints](GraphQL%20Endpoints.md#2.1.%20Lab%20Accessing%20private%20GraphQL%20posts%20%E2%AD%95%EF%B8%8F)
+		- [[GraphQL Endpoints#2.1. Lab Accessing private GraphQL posts ⭕️]]
 	- `BlogPost` + `User`
-		- [GraphQL Endpoints](GraphQL%20Endpoints.md#2.2%20Lab%20Accidental%20exposure%20of%20private%20GraphQL%20fields%20%E2%AD%95%EF%B8%8F)
+		- [[GraphQL Endpoints#2.2 Lab Accidental exposure of private GraphQL fields ⭕️]]
 
 
 
 #### Every field + File Upload in Blog
 ##### Page Source
 - `svg` in `<img>` tag
-	- [XXE](XXE.md#3.8.%20Lab%20Exploiting%20XXE%20via%20image%20file%20upload%20%E2%AD%95%EF%B8%8F)
+	- [[XXE#3.8. Lab Exploiting XXE via image file upload ⭕️]]
 - `indexOf('http')` + `addEventListener`
-	- [DOM-Based XSS](DOM-Based%20XSS.md#1.2.%20Lab%20DOM%20XSS%20using%20web%20messages%20and%20a%20JavaScript%20URL%20%E2%AD%95%EF%B8%8F)
+	- [[DOM-Based XSS#1.2. Lab DOM XSS using web messages and a JavaScript URL ⭕️]]
 
 
 #### Every field
 ##### Page Source
 - More than one result of `canonical`
-	- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20in%20canonical%20link%20tag%20%E2%AD%95%EF%B8%8F)
+	- [[Reflected XSS#1.x. Lab Reflected XSS in canonical link tag ⭕️]]
 
 ##### `X-Cache`
 - Query string in response like `?cb=123` + `X-Cache: miss` <sup>X-Cache has to say miss and cb=123 is reflected in response</sup>
-	- [Web Cache Poisoning](Web%20Cache%20Poisoning.md#1.5.Lab%20Web%20cache%20poisoning%20via%20an%20unkeyed%20query%20string%20%E2%AD%95%EF%B8%8F)
-	- [Web Cache Poisoning](Web%20Cache%20Poisoning.md#1.6.Lab%20Web%20cache%20poisoning%20via%20an%20unkeyed%20query%20parameter%20%E2%AD%95%EF%B8%8F)
-	- [Web Cache Poisoning](Web%20Cache%20Poisoning.md#1.9.%20Lab%20URL%20normalization%20%E2%AD%95%EF%B8%8F)
+	- [[Web Cache Poisoning#1.5.Lab Web cache poisoning via an unkeyed query string ⭕️]]
+	- [[Web Cache Poisoning#1.6.Lab Web cache poisoning via an unkeyed query parameter ⭕️]]
+	- [[Web Cache Poisoning#1.9. Lab URL normalization ⭕️]]
 - Param Miner > Guess query params > Parameter Cloaking
-	- [Web Cache Poisoning](Web%20Cache%20Poisoning.md#1.7.Lab%20Parameter%20cloaking%20%E2%AD%95%EF%B8%8F)
+	- [[Web Cache Poisoning#1.7.Lab Parameter cloaking ⭕️]]
 - `/js/geolocate.js?callback=setCountryCookie`
-	- [Web Cache Poisoning](Web%20Cache%20Poisoning.md#1.8.%20Lab%20Web%20cache%20poisoning%20via%20a%20fat%20GET%20request%20%E2%AD%95%EF%B8%8F)
+	- [[Web Cache Poisoning#1.8. Lab Web cache poisoning via a fat GET request ⭕️]]
 
 ##### Submit Feedback
 - `jQuery 1.8.2`
 	- `GET /feedback?returnPath=/`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.5.%20Lab%20DOM%20XSS%20in%20jQuery%20anchor%20%60href%60%20attribute%20sink%20using%20%60location.search%60%20source%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.5. Lab DOM XSS in jQuery anchor `href` attribute sink using `location.search` source ⭕️]]
 - `csrf` token in `POST /feedback/submit`
-	- [Clickjacking](Clickjacking.md#1%2F2.4.%20Lab%20Exploiting%20clickjacking%20vulnerability%20to%20trigger%20DOM-based%20XSS%20%E2%AD%95%EF%B8%8F)
+	- [[Clickjacking#1/2.4. Lab Exploiting clickjacking vulnerability to trigger DOM-based XSS ⭕️]]
 
 ##### Target > Engagement tools > Search
 - `returnUrl = /url`
-	- [DOM-Based XSS](DOM-Based%20XSS.md#1.4.%20Lab%20DOM-based%20open%20redirection%20%E2%AD%95%EF%B8%8F)
+	- [[DOM-Based XSS#1.4. Lab DOM-based open redirection ⭕️]]
 - `html.replace`
-	- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20Stored%20DOM%20XSS%20%E2%AD%95%EF%B8%8F)
+	- [[DOM-Based XSS#1.x. Lab Stored DOM XSS ⭕️]]
 - `hashchange`
-	- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20DOM%20XSS%20in%20jQuery%20selector%20sink%20using%20a%20hashchange%20event%20%E2%AD%95%EF%B8%8F)
+	- [[DOM-Based XSS#1.x. Lab DOM XSS in jQuery selector sink using a hashchange event ⭕️]]
 
 ##### Post Comment
 - Solved with `</p><script>alert(1)</script>`
-	- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Stored%20XSS%20into%20HTML%20context%20with%20nothing%20encoded%20%E2%AD%95%EF%B8%8F)
+	- [[Stored XSS#1.x. Lab Stored XSS into HTML context with nothing encoded ⭕️]]
 - `name` field is a hyperlink
 	- Solve with `javascript:alert(1)`
-		- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Stored%20XSS%20into%20anchor%20%60href%60%20attribute%20with%20double%20quotes%20HTML-encoded%20%E2%AD%95%EF%B8%8F)
+		- [[Stored XSS#1.x. Lab Stored XSS into anchor `href` attribute with double quotes HTML-encoded ⭕️]]
 	- `website` field has client side validation
-		- [Stored XSS](Stored%20XSS.md#1.x.%20Lab%20Stored%20XSS%20into%20%60onclick%60%20event%20with%20angle%20brackets%20and%20double%20quotes%20HTML-encoded%20and%20single%20quotes%20and%20backslash%20escaped%20%E2%AD%95%EF%B8%8F)
+		- [[Stored XSS#1.x. Lab Stored XSS into `onclick` event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped ⭕️]]
 
 
-##### Use this HTTP Request Smuggling Payload: [README](../../Stage%201/HTTP%20Request%20Smuggling/README.md#%5Eosmqx6)
+##### Use this HTTP Request Smuggling Payload: [[Burp Exam Notes/Stage 1/HTTP Request Smuggling/README#^osmqx6]]
 - 500 Internal Server Error
 	- "Server Error: Communication timed out"
-		- [CL](CL.md#1.1.%20Lab%20HTTP%20request%20smuggling%2C%20confirming%20a%20CL.TE%20vulnerability%20via%20differential%20responses%20%E2%AD%95%EF%B8%8F)
-		- [CL](CL.md#1.x.%20Lab%20HTTP%20request%20smuggling%2C%20basic%20CL.TE%20vulnerability%20%E2%AD%95%EF%B8%8F)
+		- [[CL.TE#1.1. Lab HTTP request smuggling, confirming a CL.TE vulnerability via differential responses ⭕️]]
+		- [[CL.TE#1.x. Lab HTTP request smuggling, basic CL.TE vulnerability ⭕️]]
 		- `User-Agent` reflected in response in `GET /post?postId=`
-			- [CL](CL.md#1.7.%20Lab%20Exploiting%20HTTP%20request%20smuggling%20to%20deliver%20reflected%20XSS%20%E2%AD%95%EF%B8%8F)
+			- [[CL.TE#1.7. Lab Exploiting HTTP request smuggling to deliver reflected XSS ⭕️]]
 - 400 Bad Request
-	- [TE](TE.md#1.2.%20Lab%20HTTP%20request%20smuggling%2C%20confirming%20a%20TE.CL%20vulnerability%20via%20differential%20responses%20%E2%AD%95%EF%B8%8F)
-	- [TE](TE.md#1.x.%20Lab%20HTTP%20request%20smuggling%2C%20basic%20TE.CL%20vulnerability%20%E2%AD%95%EF%B8%8F)
-	- [Others](Others.md#1.x.%20Lab%20CL.0%20request%20smuggling%20%E2%AD%95%EF%B8%8F)
+	- [[TE.CL#1.2. Lab HTTP request smuggling, confirming a TE.CL vulnerability via differential responses ⭕️]]
+	- [[TE.CL#1.x. Lab HTTP request smuggling, basic TE.CL vulnerability ⭕️]]
+	- [[Others#1.x. Lab CL.0 request smuggling ⭕️]]
 
 ##### "HTML is allowed"
-- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20Exploiting%20DOM%20clobbering%20to%20enable%20XSS%20%E2%AD%95%EF%B8%8F)
+- [[DOM-Based XSS#1.x. Lab Exploiting DOM clobbering to enable XSS ⭕️]]
 
 
 #### Search Bar
 ##### Use the HTTP Request Smuggling Payload
 - 400 Bad Request
 	- "Both chunked encoding and content-length were specified"
-		- [HTTP2](HTTP2.md#1.9.%20Lab%20H2.CL%20request%20smuggling%20%E2%AD%95%EF%B8%8F)
+		- [[HTTP2#1.9. Lab H2.CL request smuggling ⭕️]]
 
 ##### DOM Invader
 - Inject forms > Search
 	- `document.write(1)`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20DOM%20XSS%20in%20%60document.write%60%20sink%20using%20source%20%60location.search%60%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.x. Lab DOM XSS in `document.write` sink using source `location.search` ⭕️]]
 	- `element.InnerHTML(1)`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.4.%20Lab%20DOM%20XSS%20in%20%60innerHTML%60%20sink%20using%20source%20%60location.search%60%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.4. Lab DOM XSS in `innerHTML` sink using source `location.search` ⭕️]]
 	- `element.setAttribute.href(1)` / `ng-app` / `angular 1.7.7`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20DOM%20XSS%20in%20AngularJS%20expression%20with%20angle%20brackets%20and%20double%20quotes%20HTML-encoded%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.x. Lab DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded ⭕️]]
 	- `eval(1)`
-		- [DOM-Based XSS](DOM-Based%20XSS.md#1.x.%20Lab%20Reflected%20DOM%20XSS%20%E2%AD%95%EF%B8%8F)
+		- [[DOM-Based XSS#1.x. Lab Reflected DOM XSS ⭕️]]
 
 ##### Enter XSS Payload
 ```
 <script>alert(1)</script>
 ```
 - Solved with payload
-	- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20HTML%20context%20with%20nothing%20encoded%20%E2%AD%95%EF%B8%8F)
+	- [[Reflected XSS#1.x. Lab Reflected XSS into HTML context with nothing encoded ⭕️]]
 - `&lt;script&gt;alert(1)&lt;/script&gt;`
-	- <sup>Scan results: YES</sup> [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20attribute%20with%20angle%20brackets%20HTML-encoded%20%E2%AD%95%EF%B8%8F)
+	- <sup>Scan results: YES</sup> [[Reflected XSS#1.x. Lab Reflected XSS into attribute with angle brackets HTML-encoded ⭕️]]
 - `var searchTerms`
-	- <sup>Scan results: YES</sup> [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20angle%20brackets%20HTML%20encoded%20%E2%AD%95%EF%B8%8F)
-	- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20single%20quote%20and%20backslash%20escaped%20%E2%AD%95%EF%B8%8F)
-	- <sup>Scan results: YES</sup> [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20angle%20brackets%20and%20double%20quotes%20HTML-encoded%20and%20single%20quotes%20escaped%20%E2%AD%95%EF%B8%8F)
+	- <sup>Scan results: YES</sup> [[Reflected XSS#1.x. Lab Reflected XSS into a JavaScript string with angle brackets HTML encoded ⭕️]]
+	- [[Reflected XSS#1.x. Lab Reflected XSS into a JavaScript string with single quote and backslash escaped ⭕️]]
+	- <sup>Scan results: YES</sup> [[Reflected XSS#1.x. Lab Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped ⭕️]]
 - `var message`
 	- Payload enclosed in backticks
-		- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20a%20template%20literal%20with%20angle%20brackets%2C%20single%2C%20double%20quotes%2C%20backslash%20and%20backticks%20Unicode-escaped%20%E2%AD%95%EF%B8%8F)
+		- [[Reflected XSS#1.x. Lab Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped ⭕️]]
 - `var key`
-	- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20with%20AngularJS%20sandbox%20escape%20without%20strings%20%E2%AD%95%EF%B8%8F)
+	- [[Reflected XSS#1.x. Lab Reflected XSS with AngularJS sandbox escape without strings ⭕️]]
 - "Tag is not allowed"
 	- `<body>` / `<custom tags>` allowed
-		- <sup>Scan results: YES</sup> [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20HTML%20context%20with%20most%20tags%20and%20attributes%20blocked%20%E2%AD%95%EF%B8%8F)
+		- <sup>Scan results: YES</sup> [[Reflected XSS#1.x. Lab Reflected XSS into HTML context with most tags and attributes blocked ⭕️]]
 	- `<svg>` allowed
-		- [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20with%20some%20SVG%20markup%20allowed%20%E2%AD%95%EF%B8%8F)
+		- [[Reflected XSS#1.x. Lab Reflected XSS with some SVG markup allowed ⭕️]]
 	- `<xss+id=x>#x';` allowed
-		- <sup>Scan results: YES</sup> [Reflected XSS](Reflected%20XSS.md#1.x.%20Lab%20Reflected%20XSS%20into%20HTML%20context%20with%20all%20tags%20blocked%20except%20custom%20ones%20%E2%AD%95%EF%B8%8F)
+		- <sup>Scan results: YES</sup> [[Reflected XSS#1.x. Lab Reflected XSS into HTML context with all tags blocked except custom ones ⭕️]]
 
 
 

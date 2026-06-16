@@ -22,7 +22,7 @@
 
 
 First thing to do for Stage 1 to get an user account:
-- [Authentication](Authentication.md#1.7.%20Lab%20Username%20enumeration%20via%20account%20lock%20%E2%AD%95%EF%B8%8F)
+- [[Authentication#1.7. Lab Username enumeration via account lock ⭕️]]
 
 ### For Deliver exploit to victim payloads
 If fetch or document.location doesn't work, try this simpler one:

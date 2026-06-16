@@ -1,20 +1,20 @@
 #### Add to Cart 🛒
 ##### Change Email
 - Checkout > `chosen_discount` in `GET /api/checkout`
-	- [API Testing](API%20Testing.md#2.4.%20Lab%20Exploiting%20a%20mass%20assignment%20vulnerability%20%E2%AD%95%EF%B8%8F)
+	- [[API Testing#2.4. Lab Exploiting a mass assignment vulnerability ⭕️]]
 
 ##### Change Email + Gift Card
-- [Authentication](Authentication.md#1.x.%20Lab%20Infinite%20money%20logic%20flaw%20%E2%AD%95%EF%B8%8F)](<#### Add to Cart 🛒
+- [[Authentication#1.x. Lab Infinite money logic flaw ⭕️]]](<#### Add to Cart 🛒
 ##### Change Email
 - Coupon field 
-	- [Business logic vulnerabilities](Business%20logic%20vulnerabilities.md#1%2F2.1.Lab%20Excessive%20trust%20in%20client-side%20controls%20%E2%AD%95%EF%B8%8F)
-	- [Business logic vulnerabilities](Business%20logic%20vulnerabilities.md#x.2.%20Lab%20High-level%20logic%20vulnerability%20%E2%AD%95%EF%B8%8F)
-	- [Business logic vulnerabilities](Business%20logic%20vulnerabilities.md#x.8.%20Lab%20Insufficient%20workflow%20validation%20%E2%AD%95%EF%B8%8F)
+	- [[Business logic vulnerabilities#1/2.1.Lab Excessive trust in client-side controls ⭕️]]
+	- [[Business logic vulnerabilities#x.2. Lab High-level logic vulnerability ⭕️]]
+	- [[Business logic vulnerabilities#x.8. Lab Insufficient workflow validation ⭕️]]
 	- `PROMO20` promo code
-		- [Race conditions](Race%20conditions.md#x.1.%20Lab%20Limit%20overrun%20race%20conditions%20%E2%AD%95%EF%B8%8F)
+		- [[Race conditions#x.1. Lab Limit overrun race conditions ⭕️]]
 	- `NEWCUST5` promo code
-		- [Business logic vulnerabilities](Business%20logic%20vulnerabilities.md#x.4.Lab%20Flawed%20enforcement%20of%20business%20rules%20%E2%AD%95%EF%B8%8F)
+		- [[Business logic vulnerabilities#x.4.Lab Flawed enforcement of business rules ⭕️]]
 	- Change email %3E "Please click the link in your email to confirm the change of e-mail..."
-		- [Race conditions](Race%20conditions.md#2.4.%20Lab%20Single-endpoint%20race%20conditions%20%E2%AD%95%EF%B8%8F)
+		- [[Race conditions#2.4. Lab Single-endpoint race conditions ⭕️]]
 - Checkout > `chosen_discount` in `GET /api/checkout`
-	- [API Testing](API%20Testing.md#2.4.%20Lab%20Exploiting%20a%20mass%20assignment%20vulnerability%20%E2%AD%95%EF%B8%8F)
+	- [[API Testing#2.4. Lab Exploiting a mass assignment vulnerability ⭕️]]

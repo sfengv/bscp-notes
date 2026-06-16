@@ -1,4 +1,4 @@
-## Stage 2 + 3
+### Stage 2 + 3
 
 Server Side Prototype Pollution
 
@@ -15,7 +15,7 @@ Server Side Prototype Pollution
 }
 ```
 
-![SSPP-20260219210906626](SSPP-20260219210906626.png)
+![[SSPP-20260219210906626.png]]
 
 2. Use the payload below > Admin panel > Run maintenance jobs > poll burp collaborator to extract the contents of the `/home/carlos` directory encoded in base64. Notice there are node_apps and secret.
 ```
@@ -24,7 +24,7 @@ Server Side Prototype Pollution
 }
 ```
 
-![SSPP-20260219211226474](SSPP-20260219211226474.png)
+![[SSPP-20260219211226474.png]]
 
 3. Change the payload slightly to `cat /home/carlos/secret`. Repeat Step 2 to get the secret. Submit `5CCkFInaOSEzU5tkV9AWilJ0t3elmEbE` to solve.
 ```
@@ -32,7 +32,7 @@ Server Side Prototype Pollution
 }
 }
 ```
-![SSPP-20260219211551326](SSPP-20260219211551326.png)
+![[SSPP-20260219211551326.png]]
 
 
 
@@ -40,7 +40,7 @@ Server Side Prototype Pollution
 ---
 Ignore this
 
-Refers to [this lab](https://portswigger.net/web-security/prototype-pollution/server-side/lab-remote-code-execution-via-server-side-prototype-pollution) in [Server side](Server%20side.md#3.9.%20Lab%20Remote%20code%20execution%20via%20server-side%20prototype%20pollution%20%E2%AD%95%EF%B8%8F)
+Refers to [this lab](https://portswigger.net/web-security/prototype-pollution/server-side/lab-remote-code-execution-via-server-side-prototype-pollution) in [[Server side#3.9. Lab Remote code execution via server-side prototype pollution ⭕️]]
 But can leverage Prototype Pollution in Stage 3 to get the secret file.
 Steps
 1. Find a prototype pollution source that you can use to add arbitrary properties to the global Object.prototype.

@@ -1,46 +1,46 @@
 
-![Likely Vulns on the Exam-20260222193745005](Likely%20Vulns%20on%20the%20Exam-20260222193745005.png)
+![[Likely Vulns on the Exam-20260222193745005.png]]
 
 
 **Stage 1**
 - Forgot password
-	- [Host Headers](Host%20Headers.md#1.1%20Lab%20Basic%20password%20reset%20poisoning%20%E2%AD%95%EF%B8%8F)
+	- [[Host Headers#1.1 Lab Basic password reset poisoning ⭕️]]
 - `/resources/js/tracking.js`
-	- [Web Cache Poisoning](Web%20Cache%20Poisoning.md#1.1.%20Lab%20Web%20cache%20poisoning%20with%20an%20unkeyed%20header%20%E2%AD%95%EF%B8%8F)
+	- [[Web Cache Poisoning#1.1. Lab Web cache poisoning with an unkeyed header ⭕️]]
 - Password reset
-	- [Password Reset](Password%20Reset.md#2.3.%20Lab%20Password%20reset%20broken%20logic%20%E2%AD%95%EF%B8%8F)
+	- [[Password Reset#2.3. Lab Password reset broken logic ⭕️]]
 - HTTP Request Smuggling 
 	- But it requires the `User-Agent` to be reflected in the response for payload to work
-	- [Others](Others.md#1.x.%20Lab%20HTTP%20request%20smuggling%2C%20obfuscating%20the%20TE%20header%20%E2%AD%95%EF%B8%8F)
+	- [[Others#1.x. Lab HTTP request smuggling, obfuscating the TE header ⭕️]]
 - Search
 	- Target scan to ID the specific XSS lab
 
 **Stage 2**
 - Admin panel
-	- [Access Control](Access%20Control.md#2.3.%20Lab%20User%20role%20controlled%20by%20request%20parameter%20%E2%AD%95%EF%B8%8F)
+	- [[Access Control#2.3. Lab User role controlled by request parameter ⭕️]]
 - Advanced search
 	- Target scan / SQLmap to ID specific SQLi lab
 - AJAX request
-	- [CORS](Stage%202/CORS.md#2.3.%20Lab%20CORS%20vulnerability%20with%20trusted%20insecure%20protocols%20%E2%AD%95%EF%B8%8F)
+	- [[Burp Exam Notes/Stage 2/CORS#2.3. Lab CORS vulnerability with trusted insecure protocols ⭕️]]
 - `isloggedin`
-	- [CSRF](CSRF.md#If%20a%20%60isloggedin%60%20value%20is%20identified%20in%20a%20cookie)
+	- [[CSRF#If a `isloggedin` value is identified in a cookie]]
 - Change email
-	- [CSRF](CSRF.md#2.5.%20Lab%20CSRF%20where%20token%20is%20tied%20to%20non-session%20cookie%20%E2%AD%95%EF%B8%8F)
+	- [[CSRF#2.5. Lab CSRF where token is tied to non-session cookie ⭕️]]
 - JWT
 	- Any of the JWT labs
 
 **Stage 3**
 - XML file import user / OS command injection inside XXE admin user import
-	- [XXE](XXE.md#Admin%20user%20import%20via%20XML)
+	- [[XXE#Admin user import via XML]]
 - Path traversal
 	- Any of the LFI labs
 - Admin panel
 	- Download report
-		- [PDF Download Feature](PDF%20Download%20Feature.md#HTML%20to%20PDF)
+		- [[PDF Download Feature#HTML to PDF]]
 	- Config password reset email template
-		- [SSTI](SSTI.md#Admin%20panel%20Password%20Reset%20Email%20SSTI)
+		- [[SSTI#Admin panel Password Reset Email SSTI]]
 	- Upload image RFI
-		- [Upload Image from URL](Upload%20Image%20from%20URL.md#Remote%20File%20Inclusion)
+		- [[Upload Image from URL#Remote File Inclusion]]
 
 
 ### STAGE 1
@@ -48,12 +48,12 @@ These are based on that grid image. Still good notes.
 **BRUSH UP ON HOST HEADER + CACHE POISONING** 
 
 - Identify valid user accounts with password reset function
-	- [Brute Force](Brute%20Force.md#1.1%20Lab%20Username%20enumeration%20via%20different%20responses%20%E2%AD%95%EF%B8%8F)
+	- [[Brute Force#1.1 Lab Username enumeration via different responses ⭕️]]
 	- Valid username message will say "Please check your email..."
 	- Invalid username message will say "Please check your email... If it hasn't arrived after five minutes..."
 
 - HTTP Request Smuggling (XSS via User-Agent)
-	- [CL](CL.TE#1.7.%20Lab%20Exploiting%20HTTP%20request%20smuggling%20to%20deliver%20reflected%20XSS%20%E2%AD%95%EF%B8%8F)
+	- [[CL.TE#1.7. Lab Exploiting HTTP request smuggling to deliver reflected XSS ⭕️]]
 
 Payloads
 ```
@@ -108,7 +108,7 @@ Cookie: <COOKIE>
 
 ### STAGE 2
 - CORS AJAX Account API and session cookie from admin
-	- [CORS](Stage%202/CORS.md#2.1.%20Lab%20CORS%20vulnerability%20with%20basic%20origin%20reflection%20%E2%AD%95%EF%B8%8F)
+	- [[Burp Exam Notes/Stage 2/CORS#2.1. Lab CORS vulnerability with basic origin reflection ⭕️]]
 	- XSS on Check stock?
 If this gets an alert
 ```
@@ -154,7 +154,7 @@ function sendAPI() {
 
 
 - CSRF Refresh Password (COOKIE -> isloggedin : true)
-	- [CSRF](CSRF.md#If%20a%20%60isloggedin%60%20value%20is%20identified%20in%20a%20cookie)
+	- [[CSRF#If a `isloggedin` value is identified in a cookie]]
 
 
 - CSRF change email admin formid
@@ -180,7 +180,7 @@ function sendAPI() {
 
 - Review this lab: **SQL injection with filter bypass via XML encoding**
 	- `POST /product/stock` uses XML
-		- [SQLi](SQLi.md#2.18.%20Lab%20SQL%20injection%20with%20filter%20bypass%20via%20XML%20encoding%20%E2%AD%95%EF%B8%8F)
+		- [[SQLi#2.18. Lab SQL injection with filter bypass via XML encoding ⭕️]]
 
 SQLmap command for this lab because SQLmap won't be able to find it. 
 *Will need to test `productId` and `storeId`*
@@ -218,7 +218,7 @@ GET /adminpanel/admin_img?filename=..%252f..%252f..%252f..%252f..%252f..%252f..%
 ```
 
 - admin_panel Config the password reset email template SSTI
-	- [SSTI](SSTI.md#3.3.%20Lab%20Server-side%20template%20injection%20using%20documentation%20%E2%AD%95%EF%B8%8F)
+	- [[SSTI#3.3. Lab Server-side template injection using documentation ⭕️]]
 
 ```
 # How to identify SSTI

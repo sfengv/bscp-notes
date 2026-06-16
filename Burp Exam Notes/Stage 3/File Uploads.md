@@ -1,4 +1,4 @@
-## Stage 3
+### Stage 3
 ### What is it?
 A more versatile web shell may look something like this:
 `<?php echo system($_GET['command']); ?>`
@@ -26,20 +26,20 @@ Upload feature
 - After uploading `.php` file
 	- `GET /.../{FILE}.php`
 		- 200 OK
-			- [File Uploads](File%20Uploads.md#3.1.%20Lab%20Remote%20code%20execution%20via%20web%20shell%20upload%20%E2%AD%95%EF%B8%8F)
-			- [File Uploads](File%20Uploads.md#3.3.%20Lab%20Web%20shell%20upload%20via%20path%20traversal%20%E2%AD%95%EF%B8%8F)
+			- [[File Uploads#3.1. Lab Remote code execution via web shell upload ⭕️]]
+			- [[File Uploads#3.3. Lab Web shell upload via path traversal ⭕️]]
 		- "Sorry, file type text/php is not allowed Only image/jpeg and image/png are allowed..."
 			- **Solution:** Change the `Content-Type` to `image/png` > refresh and check `GET` request for secret
-			- [File Uploads](File%20Uploads.md#3.2.%20Lab%20Web%20shell%20upload%20via%20Content-Type%20restriction%20bypass%20%E2%AD%95%EF%B8%8F)
+			- [[File Uploads#3.2. Lab Web shell upload via Content-Type restriction bypass ⭕️]]
 	- `POST /my-account/avatar`
 		- "Sorry, php files are not allowed" / `Apache/2.4.41`
 			- **Solution:** Try `.phar`, if not, follow the lab
-			- [File Uploads](File%20Uploads.md#3.4.%20Lab%20Web%20shell%20upload%20via%20extension%20blacklist%20bypass%20%E2%AD%95%EF%B8%8F)
+			- [[File Uploads#3.4. Lab Web shell upload via extension blacklist bypass ⭕️]]
 		- "Sorry, only JPY & PNG files are allowed"
 			- **Solution:** Add a null byte like `get_file_content.php%00.png` then to get the content remove the null byte like `GET /files/avatars/get_file_content.php`
-			- [File Uploads](File%20Uploads.md#3.5.%20Lab%20Web%20shell%20upload%20via%20obfuscated%20file%20extension%20%E2%AD%95%EF%B8%8F)
+			- [[File Uploads#3.5. Lab Web shell upload via obfuscated file extension ⭕️]]
 		- "Error: file is not a valid image"
-			- [File Uploads](File%20Uploads.md#3.6.%20Lab%20Remote%20code%20execution%20via%20polyglot%20web%20shell%20upload%20%E2%AD%95%EF%B8%8F)
+			- [[File Uploads#3.6. Lab Remote code execution via polyglot web shell upload ⭕️]]
 
 
 
@@ -52,11 +52,11 @@ To solve the lab, upload a basic PHP web shell and use it to exfiltrate the cont
 
 You can log in to your own account using the following credentials: `wiener:peter`
 1. Login and notice a file upload feature to upload a picture as your avatar. Notice a `GET` request retrieving the image you uploaded -- Send to Repeater.
-	1. ![File Uploads-20260116162236674](File%20Uploads-20260116162236674.png)
+	1. ![[File Uploads-20260116162236674.png]]
 2. On your machine, create a file and paste the following payload in it: `<?php echo file_get_contents('/home/carlos/secret'); ?>` with the `.php` extension.
-	1. ![File Uploads-20260116162535403](File%20Uploads-20260116162535403.png)
+	1. ![[File Uploads-20260116162535403.png]]
 3. Upload it and find the `GET` request retrieving that file, grab the secret, submit and solve.
-	1. ![File Uploads-20260116162613106](File%20Uploads-20260116162613106.png)
+	1. ![[File Uploads-20260116162613106.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. File upload feature
 >2. `GET` request to retrieve the image you uploaded like `GET /files/avatars/bird.png`
@@ -69,11 +69,11 @@ To solve the lab, upload a basic PHP web shell and use it to exfiltrate the cont
 
 You can log in to your own account using the following credentials: `wiener:peter`
 1. Login, uploading the `.php` web shell from Lab 1 will get this error: "Sorry, file type text/php is not allowed Only image/jpeg and image/png are allowed Sorry, there was an error uploading your file."
-	1. ![File Uploads-20260116163338831](File%20Uploads-20260116163338831.png)
+	1. ![[File Uploads-20260116163338831.png]]
 2. Grab the `POST /my-account/avatar` request and send to Repeater. Change the `Content-Type` to `image/png` and Send. Success.
-	1. ![File Uploads-20260116163559773](File%20Uploads-20260116163559773.png)
+	1. ![[File Uploads-20260116163559773.png]]
 3. Refresh or go back to My Account, check HTTP History and find the `GET` request that retrieves your `.php` file, get the secret, submit and solve.
-	1. ![File Uploads-20260116163710002](File%20Uploads-20260116163710002.png)
+	1. ![[File Uploads-20260116163710002.png]]
 ---
 #### 3.3. Lab: Web shell upload via path traversal ⭕️
 This lab contains a vulnerable image upload function. The server is configured to prevent execution of user-supplied files, but this restriction can be bypassed by exploiting a [secondary vulnerability](https://portswigger.net/web-security/file-path-traversal).
@@ -82,13 +82,13 @@ To solve the lab, upload a basic PHP web shell and use it to exfiltrate the cont
 
 You can log in to your own account using the following credentials: `wiener:peter`
 1. Login and upload your `.php` file from Lab 1. Check the `GET` request of your uploaded file and notice it didn't execute the file but instead it just prints back the contents.
-	1. ![File Uploads-20260116164045820](File%20Uploads-20260116164045820.png)
+	1. ![[File Uploads-20260116164045820.png]]
 2. Send the `POST /my-account/avatar` request to Repeater. Add `../` in front of your filename and Send. Notice the response says `avatars/get_file_content.php has been uploaded` without `../` meaning that the server stripped the directory traversal sequence. 
-	1. ![File Uploads-20260116164320702](File%20Uploads-20260116164320702.png)
+	1. ![[File Uploads-20260116164320702.png]]
 3. URL encode the `/` character to `%2f` and Send again. Now we see `avatars/../get_file_content.php has been uploaded`.
-	1. ![File Uploads-20260116164543266](File%20Uploads-20260116164543266.png)
+	1. ![[File Uploads-20260116164543266.png]]
 4. The `../` indicates that we uploaded our `.php` web shell one directory above `avatars` hence the `GET` request in Step 1 didn't work. Use that same `GET` request and Send this: `GET /file/get_file_content.php`. Submit and solve.
-	1. ![File Uploads-20260116164810947](File%20Uploads-20260116164810947.png)
+	1. ![[File Uploads-20260116164810947.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. Response prints out contents of uploaded file but doesn't execute
 
@@ -104,14 +104,14 @@ To solve the lab, upload a basic PHP web shell, then use it to exfiltrate the co
 
 You can log in to your own account using the following credentials: `wiener:peter`
 1. Login and upload the `.php` web shell and the `POST /my-account/avatar` response show an error. *Notice the Server is running `Apache`*. Send to Repeater.
-	1. ![File Uploads-20260116165834161](File%20Uploads-20260116165834161.png)
+	1. ![[File Uploads-20260116165834161.png]]
 2. Set the request to the following: `filename=".htaccess`, `Content-Type: text/plain`, `AddType application/x-httpd-php .l33t` and Send.
-	1. ![File Uploads-20260116170449850](File%20Uploads-20260116170449850.png)
+	1. ![[File Uploads-20260116170449850.png]]
 >This maps an arbitrary extension (`.l33t`) to the executable MIME type `application/x-httpd-php`.
 3. Click the back arrow in Request, replace `.php` with `.l33t`, Send, success.
-	1. ![File Uploads-20260116170605941](File%20Uploads-20260116170605941.png)
+	1. ![[File Uploads-20260116170605941.png]]
 4. Refresh My account > check HTTP History > get secret and submit to solve.
-	1. ![File Uploads-20260116170653624](File%20Uploads-20260116170653624.png)
+	1. ![[File Uploads-20260116170653624.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. Error in response indicates a denylist of file extensions "php files are not allowed"
 >2. Server running `Apache`
@@ -128,11 +128,11 @@ To solve the lab, upload a basic PHP web shell, then use it to exfiltrate the co
 
 You can log in to your own account using the following credentials: `wiener:peter`
 1. Login > upload `.php` > got error "Sorry, only JPY & PNG files are allowed". Send this `POST` request to Repeater. 
-	1. ![File Uploads-20260116170933372](File%20Uploads-20260116170933372.png)
+	1. ![[File Uploads-20260116170933372.png]]
 2. Append a null byte (`%00`) and `.png` to the filename like `get_file_content.php%00.png`. Send and success.
-	1. ![File Uploads-20260116171249857](File%20Uploads-20260116171249857.png)
+	1. ![[File Uploads-20260116171249857.png]]
 3. Refresh My account > grab the `GET` request retrieving the file, send to Repeater, remove `%00.png`, Send, submit the secret and solve.
-	1. ![File Uploads-20260116171404423](File%20Uploads-20260116171404423.png)
+	1. ![[File Uploads-20260116171404423.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. Error in response indicates an allowlist of file extensions "only jpg and png are allowed"
 >2. Changing `Content-Type: image/png` doesn't work
@@ -145,18 +145,18 @@ To solve the lab, upload a basic PHP web shell, then use it to exfiltrate the co
 
 You can log in to your own account using the following credentials: `wiener:peter`
 1. Login, upload `.php` and got error. Also, every technique from previous labs doesn't work.
-	1. ![File Uploads-20260116171830149](File%20Uploads-20260116171830149.png)
+	1. ![[File Uploads-20260116171830149.png]]
 2. Create a polygot:
 	1. You'll need a legitimate normal image (`block.png`) then run the following command and our exploit file will be `polyglot.php`. Replace *Your-INPUT-IMAGE* with the filename of your image file.
 ```
 exiftool -Comment="<?php echo 'START ' . file_get_contents('/home/carlos/secret') . ' END'; ?>" <YOUR-INPUT-IMAGE>.png -o polyglot.php
 ```
-![File Uploads-20260116172423873](File%20Uploads-20260116172423873.png)
+![[File Uploads-20260116172423873.png]]
 >[!info] What is a Polyglot?
 >A **polyglot** is a single file that is valid in two or more different file formats, allowing it to masquerade as a harmless file (like an image) while containing hidden, malicious code.
 3. Upload the `polyglot.php` file and success. Find the `GET` request retrieving the ployglot file, search for `Start` then submit the secret to solve.
-	1. ![File Uploads-20260116172753138](File%20Uploads-20260116172753138.png)
-	2. ![File Uploads-20260116172907002](File%20Uploads-20260116172907002.png)
+	1. ![[File Uploads-20260116172753138.png]]
+	2. ![[File Uploads-20260116172907002.png]]
 >[!tip] How to Identify this Vulnerability?
 >1. Upload feature only accepts image files (validates the content of the file)
 
