@@ -5,7 +5,7 @@ To solve the lab, smuggle a request to the back-end server, so that a subsequent
 ##### Automated Method
 
 Test
-![image](Assets/HTTP Request Smuggling-20260128210501980.png)
+![image](Assets/Images/HTTP Request Smuggling-20260128210501980.png)
 
 ##### Manual Method
 1. Send `GET /` to Repeater > change `HTTP/2` to `HTTP/1.1` > Send > 200 OK.
