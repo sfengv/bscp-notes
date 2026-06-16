@@ -4,10 +4,12 @@ This lab involves a front-end and back-end server, and the front-end server does
 To solve the lab, smuggle a request to the back-end server, so that a subsequent request for `/` (the web root) triggers a 404 Not Found response.
 ##### Automated Method
 
+Test
+![image](Assets/HTTP Request Smuggling-20260128210501980.png)
 
 ##### Manual Method
 1. Send `GET /` to Repeater > change `HTTP/2` to `HTTP/1.1` > Send > 200 OK.
-	1. ![[HTTP Request Smuggling-20260128210501980.png]]![image](Assets/HTTP Request Smuggling-20260128210501980.png)
+	1. ![[HTTP Request Smuggling-20260128210501980.png]]
 2. Right click > change request method (will change to `POST`). Optional: remove unnecessary headers. Toggle on `\n` button to show non-printable characters. Uncheck Update Content-Length.
 3. Set the following and notice it takes a long time for the server to respond and eventually get a timeout. CL.TE attack might be possible.
 	1. `Content-Length: 6`
