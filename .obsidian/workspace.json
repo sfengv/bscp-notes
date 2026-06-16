@@ -1,0 +1,224 @@
+{
+  "main": {
+    "id": "ba22f213bebafad3",
+    "type": "split",
+    "children": [
+      {
+        "id": "a36df162cb09cbaf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "195bbe9d55e24200",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Burp Exam Notes/Stage 1/HTTP Request Smuggling/CL.TE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CL.TE"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "dcfda74a8b354280",
+    "type": "split",
+    "children": [
+      {
+        "id": "9fe26501e6c63c85",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "41a35335a8b9e53b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "45378dfda9016349",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "\"Duplicate header names are not allowed",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b80a4f33ac170ad7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 273.5
+  },
+  "right": {
+    "id": "cd114412e04ab612",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe4582ea3ec73037",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3a64e630db2062ed",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Burp Suite Exam/Stage 1/HTTP Request Smuggling.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for HTTP Request Smuggling"
+            }
+          },
+          {
+            "id": "de6271280fc331cb",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Burp Suite Exam/Stage 1/HTTP Request Smuggling.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from HTTP Request Smuggling"
+            }
+          },
+          {
+            "id": "b24ed1776f3bc7c5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "33e84187878cea44",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Burp Suite Exam/Stage 1/HTTP Request Smuggling.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of HTTP Request Smuggling"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "local-backup:Run local backup": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "oz-clear-unused-images:Clear Unused Images": false
+    }
+  },
+  "active": "195bbe9d55e24200",
+  "lastOpenFiles": [
+    "Burp Exam Notes/Stage 3/Deserialization.md",
+    "Archive.zip",
+    "Burp Exam Notes/Stage 3/File Uploads.md",
+    "Burp Exam Notes/Stage 3/LFI.md",
+    "Burp Exam Notes/Stage 3/OS Command Injection.md",
+    "Burp Exam Notes/Stage 3/SSRF.md",
+    "Burp Exam Notes/Stage 3/SSTI.md",
+    "Burp Exam Notes/Stage 3/XXE.md",
+    "Burp Exam Notes/Stage 2/SQLi/README.md",
+    "Burp Exam Notes/Stage 3/SSPP.md",
+    "Burp Exam Notes/Stage 1/Authentication.md",
+    "Burp Exam Notes/Stage 1/Brute Force.md",
+    "Burp Exam Notes/Stage 1/Content Discovery.md",
+    "Burp Exam Notes/Stage 1/Web Cache Poisoning.md",
+    "Burp Exam Notes/Stage 1/Host Headers.md",
+    "Burp Exam Notes/Stage 2/JWT.md",
+    "Burp Exam Notes/Stage 1/HTTP Request Smuggling/README.md",
+    "Burp Exam Notes/Stage 1/XSS/README.md",
+    "Burp Exam Notes/Stage 2/Access Control.md",
+    "Burp Exam Notes/Identify Vulnerabilities 🏁/Shop 🛍️/Unauthenticated Shop/Check Stock ❌.md",
+    "Burp Exam Notes/Identify Vulnerabilities 🏁/Shop 🛍️/Unauthenticated Shop/Check Stock ✅.md",
+    "Burp Exam Notes/Identify Vulnerabilities 🏁/Shop 🛍️/Authenticated Shop/Check Stock ❌.md",
+    "Burp Exam Notes/Identify Vulnerabilities 🏁/Shop 🛍️/Authenticated Shop/Check Stock ✅.md",
+    "Burp Exam Notes/Identify Vulnerabilities 🏁/Shop 🛍️/Authenticated Shop/Add to Cart 🛒.md",
+    "Burp Exam Notes/Stage 2/SQLi/SQLi.md",
+    "Burp Exam Notes/Stage 2/SQLi/Blind SQLi.md",
+    "Burp Exam Notes/Identify Vulnerabilities 🏁/Shop 🛍️/Unauthenticated Shop",
+    "Burp Exam Notes/Identify Vulnerabilities 🏁/Shop 🛍️/Authenticated Shop",
+    "Burp Exam Notes/Stage 2/SQLi",
+    "Burp Exam Notes/Stage 2/Prototype Pollution",
+    "Burp Exam Notes/Stage 1/XSS",
+    "Burp Exam Notes/Stage 1/HTTP Request Smuggling",
+    "Burp Exam Notes/Identify Vulnerabilities 🏁/Shop 🛍️",
+    "Burp Exam Notes/Identify Vulnerabilities 🏁/Blog 💻",
+    "Burp Exam Notes/Stage 3",
+    "Archive/Assets/Images/XXE-20260222113339962.png",
+    "Archive/Assets/Images/XXE-20260113220053081.png",
+    "Archive/Assets/Images/XXE-20260113220046551.png",
+    "Archive/Assets/Images/XXE-20260113220038408.png",
+    "Archive/Assets/Images/XXE-20260113215511900.png",
+    "Archive/Assets/Images/XXE-20260113215107940.png",
+    "Archive/Assets/Images/XXE-20260113215104684.png",
+    "Archive/Assets/Images/XXE-20260113214830294.png",
+    "Archive/Assets/Images/XXE-20260113214822301.png",
+    "Archive/Assets/Images/XXE-20260113214453965.png",
+    "Untitled.canvas",
+    "Untitled 1.canvas"
+  ]
+}
